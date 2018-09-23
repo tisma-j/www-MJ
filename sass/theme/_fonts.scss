@@ -1,0 +1,31 @@
+@each $variant in Bold, BoldItalic, Headline, Italic, Light, LightItalic, Medium, MediumItalic, Regular {
+
+  @font-face {
+    font-family: 'TSTARPRO-#{$variant}';
+    src: url('../fonts/tstar/TSTARPRO-#{$variant}.eot');
+    src: url('../fonts/tstar/TSTARPRO-#{$variant}.eot?#iefix') format('embedded-opentype'), url('../fonts/tstar/TSTARPRO-#{$variant}.woff') format('woff'), url('../fonts/tstar/TSTARPRO-#{$variant}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+}
+
+@mixin font-bolder {
+  font-family: 'TSTARPRO-Headline'
+}
+
+@mixin font-bold {
+  font-family: 'TSTARPRO-Bold'
+}
+
+@mixin font-regular {
+  font-family: 'TSTARPRO-Medium'
+}
+
+@mixin font-italic {
+  font-family: 'TSTARPRO-Italic'
+}
+
+@mixin font-light {
+  font-family: 'TSTARPRO-Light'
+}
