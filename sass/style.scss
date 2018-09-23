@@ -1,0 +1,124 @@
+body{
+  margin: 0;
+}
+
+h1, h2, h3{
+  font-family: 'DINOT-CondBold';
+  font-weight: bold;
+  font-style: normal;
+}
+
+header{
+  position: fixed;
+  width: calc(100vw - (2 * 50px));
+  height: 25px;
+  margin-left: 50px;
+  top: 30px;
+  display: flex;
+
+  img{
+    position: relative;
+  }
+
+  .div-logo{
+    position: relative;
+    height: 30px;
+    flex-grow: 1!important;
+
+    .logo{
+      width: auto;
+      height: 20px;
+    }
+
+  }
+
+  .div-RS{
+    position: relative;
+    width: auto;
+    padding-right: 2rem;
+
+    .RS{
+      height: 20px;
+      padding-right: 1rem;
+    }
+  }
+
+  .div-burger{
+    position: relative;
+    width: auto;
+
+    .burger {
+      width: 40px;
+      height: 25px;
+    }
+  }
+}
+
+.div-middle{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+
+  h1{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    padding: 0;
+    margin:0;
+    opacity: 0.1;
+    font-size: 30em;
+    color: grey;
+  }
+
+  .img-middle{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+
+    img{
+    }
+  }
+
+}
+
+
+    // ABOUT
+
+.div-about{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  .div-top{
+    position: relative;
+    top: 10%;
+    width: 90%;
+    height: 30%;
+    background: url(../img/picture-about.jpg) no-repeat;
+    background-position: 50% 50%;
+    box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
+    background-size: cover;
+    display: flex;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
+
+    .div-droite, .div-gauche {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .div-gauche{
+      font-size: 1.5em;
+    }
+
+    .div-droite{
+      font-size: 2em;
+    }
+  }
+}
