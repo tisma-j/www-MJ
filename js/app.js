@@ -34,7 +34,7 @@ var Card = (function(window, undefined) {
     // Get elements.
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
-    this._content = $(this._el).find(SELECTORS.content)[0];
+    this._content = $('body').find(SELECTORS.content)[0];
 
     this.isOpen = false;
 
@@ -47,7 +47,7 @@ var Card = (function(window, undefined) {
    */
   Card.prototype.openCard = function(callback) {
 
-    this._TL = new TimelineLite;
+    this._TL = new TimelineMax({id:'card'});
 
     var slideContentDown = this._slideContentDown();
     var clipImageIn = this._clipImageIn();
@@ -58,9 +58,11 @@ var Card = (function(window, undefined) {
     // Compose sequence and use duration to overlap tweens.
     this._TL.add(slideContentDown);
     this._TL.add(clipImageIn, 0);
-    this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
-    this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.3);
-    this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+   this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
+   this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.5);
+   this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+
+    //GSDevTools.create({id:"card"});
     
 
     this.isOpen = true;
@@ -90,9 +92,10 @@ var Card = (function(window, undefined) {
 
     // Rect.
     var tween = TweenLite.to(this._clip, 0.8, {
-      width:"+=",
-      yPercent:-10,
-      ease: Expo.easeInOut
+        scaleX: 0.4,
+        scaleY: 0.3,
+      transformOrigin:"50% 50%",
+      ease: Power3.easeOut
     });
 
     return tween;
@@ -107,10 +110,10 @@ var Card = (function(window, undefined) {
 
     $(document.body).addClass(CLASSES.bodyHidden);
 
-    var TL = new TimelineLite;
-
-    var rect = this._container.getBoundingClientRect();
-    var windowW = window.innerWidth;
+    let TL            = new TimelineLite,
+        rect          = this._container.getBoundingClientRect(),
+        windowW       = window.innerWidth,
+        headerHeight  = appCDL.config.$siteHeaderHeight;
 
     var track = {
       width: 0,
@@ -127,16 +130,17 @@ var Card = (function(window, undefined) {
       overflow: 'hidden'
     });
 
-    TL.to([this._container, track], 2, {
-      width: windowW,
-      height: '100%',
+    TL.to([this._container, track], 0.8, {
+      height: '500',
       x: windowW / 2,
-      y: 0,
+      y: headerHeight,
       xPercent: -50,
-      ease: Expo.easeInOut,
-      clearProps: 'all',
-      className: '-=' + CLASSES.containerClosed,
-      onUpdate: callback.bind(this, track)
+      ease: Power1.easeOut,
+      //clearProps: 'all',
+      className: '-=' + CLASSES.containerClosed
+    }).to([this._container, track], 0.8, {
+      width: windowW,
+      ease: Power1.easeOut
     });
 
     return TL;
@@ -150,8 +154,11 @@ var Card = (function(window, undefined) {
     var windowW = window.innerWidth;
 
     var tween = TweenLite.to(this._clip, 0.8, {
-      width:'100vw',
-      height:'100vh', autoRound: false, transformOrigin:"50% 50%",
+      scaleX: 1,
+      scaleY: 1,
+      autoRound: false,
+      transformOrigin:"50% 50%",
+      smoothOrigin: true,
       ease: Expo.easeInOut
     });
 
@@ -249,7 +256,7 @@ var Card = (function(window, undefined) {
 /**
  * Demo.
  */
-var demo = (function(window, undefined) {
+var trasitionPages = (function(window, undefined) {
 
   /**
    * Enum of CSS selectors.
@@ -261,15 +268,6 @@ var demo = (function(window, undefined) {
     cardClose: '.card__btn-close',
   };
 
-  /**
-   * Enum of CSS classes.
-   */
-  var CLASSES = {
-    patternHidden: 'pattern--hidden',
-    polygon: 'polygon',
-    polygonHidden: 'polygon--hidden'
-  };
-
 
   /**
    * Container of Card instances.
@@ -277,7 +275,7 @@ var demo = (function(window, undefined) {
   var layout = {};
 
   /**
-   * Initialise demo.
+   * Initialise trasitionPages.
    */
   function init() {
 
@@ -302,7 +300,7 @@ var demo = (function(window, undefined) {
       };
 
       var cardImage = $(this).find(SELECTORS.cardImage);
-      var cardClose = $(this).find(SELECTORS.cardClose);
+      var cardClose = $('body').find(SELECTORS.cardClose);
 
       $(cardImage).on('click', {isOpenClick:true, cardId:i}, _playSequence);
       //$(cardImage).on('click', function(){console.log('click !')});
@@ -328,11 +326,12 @@ var demo = (function(window, undefined) {
     if (card.isOpen && isOpenClick) return;
 
     // Create timeline for the whole sequence.
-    var sequence = new TimelineLite({paused: true});
+    var sequence = new TimelineMax({paused: true, id: 'Main'});
 
     var tweenOtherCards = _showHideOtherCards(id);
 
     if (!card.isOpen) {
+      //appCDL.config.$swiperHome.destroy();
       // Open sequence.
 
       sequence.add(tweenOtherCards);
@@ -346,6 +345,8 @@ var demo = (function(window, undefined) {
 
       sequence.add(closeCard);
       sequence.add(tweenOtherCards, position);
+
+      //appCDL.swiperSlider();
     }
 
     sequence.play();
@@ -397,14 +398,6 @@ var demo = (function(window, undefined) {
       y: track.y
     };
 
-    // polygonMap.points.forEach(function(point, i) {
-
-    //   if (_detectPointInCircle(point, radius, center)) {
-    //     $(polygonMap.paths[i]).attr('class', CLASSES.polygon);
-    //   } else {
-    //     $(polygonMap.paths[i]).attr('class', CLASSES.polygon + ' ' + CLASSES.polygonHidden);
-    //   }
-    // });
   }
 
   /**
@@ -433,8 +426,8 @@ var demo = (function(window, undefined) {
 
 })(window);
 
-// Kickstart Demo.
-window.onload = demo.init;
+// Kickstart trasitionPages.
+window.onload = trasitionPages.init;
 
 /**
  * File app.js.
@@ -442,7 +435,7 @@ window.onload = demo.init;
  * Theme scripts
  *
  */
-
+var appCDL = null;
 
 /*
  * CODE SPECIFIQUE SITE WEB
@@ -455,7 +448,7 @@ window.onload = demo.init;
         return ($(selector).length > 0);
     };
 
-	var appCDL = {
+	appCDL = {
 		
 		/**
 		 * Main init function
@@ -494,7 +487,7 @@ window.onload = demo.init;
 				$mobileMenuBreakpoint   : 992,
 
 				// Header
-				$siteHeader             : null,
+				$siteHeader             : $( '.navbar' ),
 				$siteHeaderStyle        : null,
 				$siteHeaderHeight       : 0,
 				$siteHeaderTop          : 0,
@@ -504,6 +497,9 @@ window.onload = demo.init;
 				$hasStickyHeader        : false,
 				$hasStickyMobileHeader  : false,
 				$hasStickyNavbar        : false,
+
+				// Slider home
+				$swiperHome              : null,
 
 				// Logo
 				$siteLogo               : null,
@@ -901,6 +897,7 @@ window.onload = demo.init;
 		swiperSlider : function() {
 			console.log('swiperSlider');
 			let mySwiper, $swiperContainer;
+			var self = this;
 
 			$('body.home').each(
 				function() {
@@ -908,11 +905,13 @@ window.onload = demo.init;
 					    slidesPerView: 1,
 					    spaceBetween: 0,
 					    mousewheel: true,
+					    effect: 'fade',
 					    pagination: {
 					      el: '.swiper-pagination',
 					      clickable: true,
 					    },
 					});
+					self.config.$swiperHome = mySwiper;
 				}
 			);
 		},

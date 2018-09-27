@@ -2,6 +2,10 @@ body{
   margin: 0;
 }
 
+body.body--hidden {
+  overflow: hidden;
+}
+
 h1, h2, h3{
   font-family: 'DINOT-CondBold';
   font-weight: bold;

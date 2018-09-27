@@ -34,7 +34,7 @@ var Card = (function(window, undefined) {
     // Get elements.
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
-    this._content = $(this._el).find(SELECTORS.content)[0];
+    this._content = $('body').find(SELECTORS.content)[0];
 
     this.isOpen = false;
 
@@ -47,7 +47,7 @@ var Card = (function(window, undefined) {
    */
   Card.prototype.openCard = function(callback) {
 
-    this._TL = new TimelineLite;
+    this._TL = new TimelineMax({id:'card'});
 
     var slideContentDown = this._slideContentDown();
     var clipImageIn = this._clipImageIn();
@@ -58,9 +58,11 @@ var Card = (function(window, undefined) {
     // Compose sequence and use duration to overlap tweens.
     this._TL.add(slideContentDown);
     this._TL.add(clipImageIn, 0);
-    this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
-    this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.3);
-    this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+   this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
+   this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.5);
+   this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+
+    //GSDevTools.create({id:"card"});
     
 
     this.isOpen = true;
@@ -90,9 +92,10 @@ var Card = (function(window, undefined) {
 
     // Rect.
     var tween = TweenLite.to(this._clip, 0.8, {
-      width:"+=",
-      yPercent:-10,
-      ease: Expo.easeInOut
+        scaleX: 0.4,
+        scaleY: 0.3,
+      transformOrigin:"50% 50%",
+      ease: Power3.easeOut
     });
 
     return tween;
@@ -107,10 +110,10 @@ var Card = (function(window, undefined) {
 
     $(document.body).addClass(CLASSES.bodyHidden);
 
-    var TL = new TimelineLite;
-
-    var rect = this._container.getBoundingClientRect();
-    var windowW = window.innerWidth;
+    let TL            = new TimelineLite,
+        rect          = this._container.getBoundingClientRect(),
+        windowW       = window.innerWidth,
+        headerHeight  = appCDL.config.$siteHeaderHeight;
 
     var track = {
       width: 0,
@@ -127,16 +130,17 @@ var Card = (function(window, undefined) {
       overflow: 'hidden'
     });
 
-    TL.to([this._container, track], 2, {
-      width: windowW,
-      height: '100%',
+    TL.to([this._container, track], 0.8, {
+      height: '500',
       x: windowW / 2,
-      y: 0,
+      y: headerHeight,
       xPercent: -50,
-      ease: Expo.easeInOut,
-      clearProps: 'all',
-      className: '-=' + CLASSES.containerClosed,
-      onUpdate: callback.bind(this, track)
+      ease: Power1.easeOut,
+      //clearProps: 'all',
+      className: '-=' + CLASSES.containerClosed
+    }).to([this._container, track], 0.8, {
+      width: windowW,
+      ease: Power1.easeOut
     });
 
     return TL;
@@ -150,8 +154,11 @@ var Card = (function(window, undefined) {
     var windowW = window.innerWidth;
 
     var tween = TweenLite.to(this._clip, 0.8, {
-      width:'100vw',
-      height:'100vh', autoRound: false, transformOrigin:"50% 50%",
+      scaleX: 1,
+      scaleY: 1,
+      autoRound: false,
+      transformOrigin:"50% 50%",
+      smoothOrigin: true,
       ease: Expo.easeInOut
     });
 

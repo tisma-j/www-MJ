@@ -3,7 +3,7 @@
 /**
  * Demo.
  */
-var demo = (function(window, undefined) {
+var trasitionPages = (function(window, undefined) {
 
   /**
    * Enum of CSS selectors.
@@ -15,15 +15,6 @@ var demo = (function(window, undefined) {
     cardClose: '.card__btn-close',
   };
 
-  /**
-   * Enum of CSS classes.
-   */
-  var CLASSES = {
-    patternHidden: 'pattern--hidden',
-    polygon: 'polygon',
-    polygonHidden: 'polygon--hidden'
-  };
-
 
   /**
    * Container of Card instances.
@@ -31,7 +22,7 @@ var demo = (function(window, undefined) {
   var layout = {};
 
   /**
-   * Initialise demo.
+   * Initialise trasitionPages.
    */
   function init() {
 
@@ -56,7 +47,7 @@ var demo = (function(window, undefined) {
       };
 
       var cardImage = $(this).find(SELECTORS.cardImage);
-      var cardClose = $(this).find(SELECTORS.cardClose);
+      var cardClose = $('body').find(SELECTORS.cardClose);
 
       $(cardImage).on('click', {isOpenClick:true, cardId:i}, _playSequence);
       //$(cardImage).on('click', function(){console.log('click !')});
@@ -82,11 +73,12 @@ var demo = (function(window, undefined) {
     if (card.isOpen && isOpenClick) return;
 
     // Create timeline for the whole sequence.
-    var sequence = new TimelineLite({paused: true});
+    var sequence = new TimelineMax({paused: true, id: 'Main'});
 
     var tweenOtherCards = _showHideOtherCards(id);
 
     if (!card.isOpen) {
+      //appCDL.config.$swiperHome.destroy();
       // Open sequence.
 
       sequence.add(tweenOtherCards);
@@ -100,6 +92,8 @@ var demo = (function(window, undefined) {
 
       sequence.add(closeCard);
       sequence.add(tweenOtherCards, position);
+
+      //appCDL.swiperSlider();
     }
 
     sequence.play();
@@ -151,14 +145,6 @@ var demo = (function(window, undefined) {
       y: track.y
     };
 
-    // polygonMap.points.forEach(function(point, i) {
-
-    //   if (_detectPointInCircle(point, radius, center)) {
-    //     $(polygonMap.paths[i]).attr('class', CLASSES.polygon);
-    //   } else {
-    //     $(polygonMap.paths[i]).attr('class', CLASSES.polygon + ' ' + CLASSES.polygonHidden);
-    //   }
-    // });
   }
 
   /**
@@ -187,5 +173,5 @@ var demo = (function(window, undefined) {
 
 })(window);
 
-// Kickstart Demo.
-window.onload = demo.init;
+// Kickstart trasitionPages.
+window.onload = trasitionPages.init;
