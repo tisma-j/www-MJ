@@ -10059,6 +10059,9 @@ img.mfp-img {
 body {
   margin: 0; }
 
+body.body--hidden {
+  overflow: hidden; }
+
 h1, h2, h3 {
   font-family: 'DINOT-CondBold';
   font-weight: bold;
@@ -10238,14 +10241,27 @@ body {
 /*
  * HEADER
  */
-.navbar-brand {
+.navbar .navbar-brand {
   max-width: 80px; }
+
+.navbar .navbar-toggler {
+  border: none; }
+  .navbar .navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384.97 384.97'%3E%3Cg fill='%234a4a4a'%3E%3Cpath d='M12.03 120.303h360.909c6.641 0 12.03-5.39 12.03-12.03 0-6.641-5.39-12.03-12.03-12.03H12.03c-6.641 0-12.03 5.39-12.03 12.03s5.39 12.03 12.03 12.03z'/%3E%3Cpath d='M372.939 180.455H12.03c-6.641 0-12.03 5.39-12.03 12.03s5.39 12.03 12.03 12.03h360.909c6.641 0 12.03-5.39 12.03-12.03s-5.389-12.03-12.03-12.03z'/%3E%3Cpath d='M372.939 264.667H132.333c-6.641 0-12.03 5.39-12.03 12.03 0 6.641 5.39 12.03 12.03 12.03h240.606c6.641 0 12.03-5.39 12.03-12.03.001-6.641-5.389-12.03-12.03-12.03z'/%3E%3C/g%3E%3C/svg%3E"); }
 
 /*
  * HOME
  */
 .home .entry-title {
   display: none; }
+
+.home .titre-section {
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%); }
 
 .edit-link {
   display: none; }
@@ -10471,10 +10487,14 @@ video {
 .card {
   position: relative;
   float: left;
-  width: 29%;
+  width: 43%;
   height: 0;
   margin: 2%;
-  padding-bottom: 20%; }
+  padding-bottom: 66%;
+  background-color: transparent;
+  border: none; }
+  .debug .card {
+    background-color: red; }
 
 .card__container {
   position: fixed;
@@ -10487,6 +10507,8 @@ video {
   -webkit-transform: translate3d(0, 0, 0);
   /* prevents flicker */
   -webkit-overflow-scrolling: touch; }
+  .debug .card__container {
+    background-color: blue; }
 
 .card__container--closed {
   position: absolute;
@@ -10497,7 +10519,7 @@ video {
   left: 50%;
   display: block;
   height: 100%;
-  max-height: 500px;
+  width: 100%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%); }
 

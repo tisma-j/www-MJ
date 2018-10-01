@@ -4,7 +4,7 @@
  * Theme scripts
  *
  */
-
+var appCDL = null;
 
 /*
  * CODE SPECIFIQUE SITE WEB
@@ -17,7 +17,7 @@
         return ($(selector).length > 0);
     };
 
-	var appCDL = {
+	appCDL = {
 		
 		/**
 		 * Main init function
@@ -56,7 +56,7 @@
 				$mobileMenuBreakpoint   : 992,
 
 				// Header
-				$siteHeader             : null,
+				$siteHeader             : $( '.navbar' ),
 				$siteHeaderStyle        : null,
 				$siteHeaderHeight       : 0,
 				$siteHeaderTop          : 0,
@@ -66,6 +66,9 @@
 				$hasStickyHeader        : false,
 				$hasStickyMobileHeader  : false,
 				$hasStickyNavbar        : false,
+
+				// Slider home
+				$swiperHome              : null,
 
 				// Logo
 				$siteLogo               : null,
@@ -463,6 +466,7 @@
 		swiperSlider : function() {
 			console.log('swiperSlider');
 			let mySwiper, $swiperContainer;
+			var self = this;
 
 			$('body.home').each(
 				function() {
@@ -470,11 +474,13 @@
 					    slidesPerView: 1,
 					    spaceBetween: 0,
 					    mousewheel: true,
+					    effect: 'fade',
 					    pagination: {
 					      el: '.swiper-pagination',
 					      clickable: true,
 					    },
 					});
+					self.config.$swiperHome = mySwiper;
 				}
 			);
 		},
