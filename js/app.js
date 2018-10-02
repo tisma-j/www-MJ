@@ -332,16 +332,18 @@ var trasitionPages = (function(window, undefined) {
 
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
-      // Open sequence.
 
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
+      sequence.call(_switchSwiperSlider, 0);
 
     } else {
       // Close sequence.
 
       var closeCard = card.closeCard();
       var position = closeCard.duration() * 0.8; // 80% of close card tween.
+
+      onfire.fire('switch_swiper', 'enable');
 
       sequence.add(closeCard);
       sequence.add(tweenOtherCards, position);
@@ -379,6 +381,17 @@ var trasitionPages = (function(window, undefined) {
     }
 
     return TL;
+  };
+
+  /**
+   * Show/Hide all other cards.
+   * @param {number} id The id of the clcked card to be avoided.
+   * @private
+   */
+  function _switchSwiperSlider() {
+
+    onfire.fire('switch_swiper', 'disable');
+
   };
 
   /**
@@ -912,8 +925,31 @@ var appCDL = null;
 					    },
 					});
 					self.config.$swiperHome = mySwiper;
+					//gestion des evenements
+					// bind event and callback
+					var switchSwiperObj = onfire.on('switch_swiper', self.swithSwiper);
 				}
 			);
+		},
+
+		/**
+		 * swithSwiper
+		 *
+		 * @description: cache swiper pour affichage en ajax de la page appelée
+		 * @since 1.0.0
+		 */
+		swithSwiper : function( swiperState ) {
+
+			var self = this;
+			switch (swiperState) {
+			  case 'disable':
+				console.log('appel de l evenement swiper en disable : ' + swiperState );
+				$('.swiper-container').css('max-height', '500px');
+			    break;
+			  case 'enable':
+			  default:
+				$('.swiper-container').css('max-height', 'auto');
+			}
 		},
 
 		/**

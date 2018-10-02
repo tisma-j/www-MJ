@@ -481,8 +481,31 @@ var appCDL = null;
 					    },
 					});
 					self.config.$swiperHome = mySwiper;
+					//gestion des evenements
+					// bind event and callback
+					var switchSwiperObj = onfire.on('switch_swiper', self.swithSwiper);
 				}
 			);
+		},
+
+		/**
+		 * swithSwiper
+		 *
+		 * @description: cache swiper pour affichage en ajax de la page appelée
+		 * @since 1.0.0
+		 */
+		swithSwiper : function( swiperState ) {
+
+			var self = this;
+			switch (swiperState) {
+			  case 'disable':
+				console.log('appel de l evenement swiper en disable : ' + swiperState );
+				$('.swiper-container').css('max-height', '500px');
+			    break;
+			  case 'enable':
+			  default:
+				$('.swiper-container').css('max-height', 'auto');
+			}
 		},
 
 		/**

@@ -79,16 +79,18 @@ var trasitionPages = (function(window, undefined) {
 
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
-      // Open sequence.
 
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
+      sequence.call(_switchSwiperSlider, 0);
 
     } else {
       // Close sequence.
 
       var closeCard = card.closeCard();
       var position = closeCard.duration() * 0.8; // 80% of close card tween.
+
+      onfire.fire('switch_swiper', 'enable');
 
       sequence.add(closeCard);
       sequence.add(tweenOtherCards, position);
@@ -126,6 +128,17 @@ var trasitionPages = (function(window, undefined) {
     }
 
     return TL;
+  };
+
+  /**
+   * Show/Hide all other cards.
+   * @param {number} id The id of the clcked card to be avoided.
+   * @private
+   */
+  function _switchSwiperSlider() {
+
+    onfire.fire('switch_swiper', 'disable');
+
   };
 
   /**
