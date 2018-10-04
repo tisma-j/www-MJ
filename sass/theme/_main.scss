@@ -6,19 +6,25 @@ body.body--hidden {
   overflow: hidden;
 }
 
-h1, h2, h3{
+h1, h2, h3, a{
   font-family: 'DINOT-CondBold';
   font-weight: bold;
+  font-style: normal;
+}
+
+p{
+  font-family: 'DINOT';
+  font-weight: normal;
   font-style: normal;
 }
 
 header{
   position: fixed;
   width: calc(100vw - (2 * 50px));
-  height: 25px;
+  height: 85px;
   margin-left: 50px;
-  top: 30px;
   display: flex;
+  align-items: center;
 
   img{
     position: relative;
@@ -84,20 +90,21 @@ header{
     img{
     }
   }
-
 }
 
 
     // ABOUT
 
 .div-about{
-  height: 100vh;
+  top: 85px;
+  position: relative;
+  height: calc(100vh - (2 * 85px));
   width: 100vw;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .div-top{
-    position: relative;
     top: 10%;
     width: 90%;
     height: 30%;
@@ -108,8 +115,7 @@ header{
     display: flex;
     box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
 
-    .div-droite, .div-gauche {
-      position: relative;
+    .div-droite, .div-gauche{
       flex: 1;
       display: flex;
       align-items: center;
@@ -126,4 +132,50 @@ header{
     }
   }
 
+  .txt-about{
+    margin-top: 50px;
+    width: 70%;
+    height: 45%;
+
+    p:first-child{
+      font-family: 'DINOT';
+      font-weight: bold;
+      font-style: normal;
+      font-size: 2em;
+    }
+  }
+}
+
+
+    // footer
+
+footer{
+  position: fixed;
+  width: calc(100vw - (2 * 50px));
+  height: 85px;
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  justify-content: space-between;
+
+  .dots{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+
+    .dot{
+      margin-left: 10px;
+      height: 15px;
+      width: 15px;
+      border-radius: 15px;
+      background-color: grey;
+    }
+  }
+
+  a{
+    position: relative;
+    font-size: 1.5em;
+
+  }
 }
