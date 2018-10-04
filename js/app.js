@@ -10,7 +10,7 @@ var Card = (function(window, undefined) {
    */
   var SELECTORS = {
     container: '.card__container',
-    content: '.card__content',
+    content: '.ajax-content',
     clip: '.clip'
   };
 
@@ -53,14 +53,14 @@ var Card = (function(window, undefined) {
     var clipImageIn = this._clipImageIn();
     var floatContainer = this._floatContainer(callback);
     var clipImageOut = this._clipImageOut();
-    var slideContentUp = this._slideContentUp();
+    //var slideContentUp = this._slideContentUp();
 
     // Compose sequence and use duration to overlap tweens.
     this._TL.add(slideContentDown);
     this._TL.add(clipImageIn, 0);
    this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
    this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.5);
-   this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+   //this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
 
     //GSDevTools.create({id:"card"});
     
@@ -266,6 +266,7 @@ var trasitionPages = (function(window, undefined) {
     card: '.card',
     cardImage: '.card__image',
     cardClose: '.card__btn-close',
+    ajaxContent: '#page',
   };
 
 
@@ -330,6 +331,8 @@ var trasitionPages = (function(window, undefined) {
 
     var tweenOtherCards = _showHideOtherCards(id);
 
+    var tweenAjaxContent = _showContent();
+
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
 
@@ -381,6 +384,21 @@ var trasitionPages = (function(window, undefined) {
     }
 
     return TL;
+  };
+
+  /**
+   * Show content when loaded.
+   * @private
+   */
+  function _showContent() {
+
+    var tween = TweenLite.to($(SELECTORS.ajaxContent), 1, {
+      y: 0,
+      clearProps: 'all',
+      ease: Expo.easeInOut
+    });
+
+    return tween;
   };
 
   /**
@@ -726,7 +744,7 @@ var appCDL = null;
 				debugMode: true,
 				elements: ['#page'],
 				animationSelector: '.site-loader',
- 				LINK_SELECTOR: '#page a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"])',
+ 				LINK_SELECTOR: '.swiper-container a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"]), .navbar a',
  				animations: {
 				    '*': {
 				        out: function (next) {
@@ -741,12 +759,17 @@ var appCDL = null;
 				        	let loader = $('.site-loader');
 				        	loader.removeClass('is-visible');
 				        	$('body').addClass('is-loaded');
+				        	  var tween = TweenLite.to($('.ajax-content'), 1, {
+				        	    y: 0,
+				        	    ease: Expo.easeInOut
+				        	  });
+
 				        	Delighters.init();
 				        }
 				    }
 				}
 			};
-			// const swupjs = new Swupjs(options)
+			const swupjs = new Swupjs(options)
 		},
 
 		/**

@@ -10,7 +10,7 @@ var Card = (function(window, undefined) {
    */
   var SELECTORS = {
     container: '.card__container',
-    content: '.card__content',
+    content: '.ajax-content',
     clip: '.clip'
   };
 
@@ -53,14 +53,14 @@ var Card = (function(window, undefined) {
     var clipImageIn = this._clipImageIn();
     var floatContainer = this._floatContainer(callback);
     var clipImageOut = this._clipImageOut();
-    var slideContentUp = this._slideContentUp();
+    //var slideContentUp = this._slideContentUp();
 
     // Compose sequence and use duration to overlap tweens.
     this._TL.add(slideContentDown);
     this._TL.add(clipImageIn, 0);
    this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
    this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.5);
-   this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
+   //this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
 
     //GSDevTools.create({id:"card"});
     

@@ -13,6 +13,7 @@ var trasitionPages = (function(window, undefined) {
     card: '.card',
     cardImage: '.card__image',
     cardClose: '.card__btn-close',
+    ajaxContent: '#page',
   };
 
 
@@ -77,6 +78,8 @@ var trasitionPages = (function(window, undefined) {
 
     var tweenOtherCards = _showHideOtherCards(id);
 
+    var tweenAjaxContent = _showContent();
+
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
 
@@ -128,6 +131,21 @@ var trasitionPages = (function(window, undefined) {
     }
 
     return TL;
+  };
+
+  /**
+   * Show content when loaded.
+   * @private
+   */
+  function _showContent() {
+
+    var tween = TweenLite.to($(SELECTORS.ajaxContent), 1, {
+      y: 0,
+      clearProps: 'all',
+      ease: Expo.easeInOut
+    });
+
+    return tween;
   };
 
   /**

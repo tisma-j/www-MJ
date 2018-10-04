@@ -282,7 +282,7 @@ var appCDL = null;
 				debugMode: true,
 				elements: ['#page'],
 				animationSelector: '.site-loader',
- 				LINK_SELECTOR: '#page a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"])',
+ 				LINK_SELECTOR: '.swiper-container a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"]), .navbar a',
  				animations: {
 				    '*': {
 				        out: function (next) {
@@ -297,12 +297,17 @@ var appCDL = null;
 				        	let loader = $('.site-loader');
 				        	loader.removeClass('is-visible');
 				        	$('body').addClass('is-loaded');
+				        	  var tween = TweenLite.to($('.ajax-content'), 1, {
+				        	    y: 0,
+				        	    ease: Expo.easeInOut
+				        	  });
+
 				        	Delighters.init();
 				        }
 				    }
 				}
 			};
-			// const swupjs = new Swupjs(options)
+			const swupjs = new Swupjs(options)
 		},
 
 		/**
