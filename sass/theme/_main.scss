@@ -1,5 +1,7 @@
 body{
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 body.body--hidden {
@@ -20,9 +22,8 @@ p{
 
 header{
   position: fixed;
-  width: calc(100vw - (2 * 50px));
-  height: 85px;
-  margin-left: 50px;
+  width: calc(100vw - (2 * 5%));
+  height: 10%;
   display: flex;
   align-items: center;
 
@@ -42,24 +43,28 @@ header{
 
   }
 
-  .div-RS{
-    position: relative;
-    width: auto;
-    padding-right: 2rem;
+  .picto-header{
+    display: flex;
 
-    .RS{
-      height: 20px;
-      padding-right: 1rem;
+    .div-RS{
+      position: relative;
+      width: auto;
+      padding-right: 2rem;
+
+      .RS{
+        height: 20px;
+        padding-right: 1rem;
+      }
     }
-  }
 
-  .div-burger{
-    position: relative;
-    width: auto;
+    .div-burger{
+      position: relative;
+      width: auto;
 
-    .burger {
-      width: 40px;
-      height: 25px;
+      .burger {
+        width: 40px;
+        height: 25px;
+      }
     }
   }
 }
@@ -96,8 +101,8 @@ header{
     // ABOUT
 
 article{
-  top: 85px;
-  position: relative;
+  top: 10%;
+  position: absolute;
   height: calc(100vh - (2 * 85px));
   width: 100vw;
   display: flex;
@@ -148,6 +153,7 @@ article{
 
     // WORK
 
+
 .div-top-work{
   top: 10%;
   width: 90%;
@@ -177,16 +183,23 @@ article{
 }
 
 .container-fluid {
+  position: absolute;
   width: 90%;
+  height: auto;
   display: flex;
 
   .nbr{
-    width: 20%;
-    border: 1px black solid;
+    // border: 1px black solid;
+    width: 15%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    p{
+    p:first-child{
+      color: #4A4A4A;
+      font-family: 'DINOT-CondBold';
+      font-weight: bold;
+      font-style: normal;
       font-size: 5em;
       position: relative;
       &::after{
@@ -194,16 +207,46 @@ article{
         width: 2px;
         height: 5rem;
         display: inline-block;
-        background-color: black;
+        background-color: #4A4A4A;
+        margin-left: 1rem;
+        top: 0.5rem;
+        position: relative;
+      }
+    }
+
+    p:nth-child(n+2){
+      color: #4A4A4A;
+      opacity: 0.1;
+      font-family: 'DINOT-CondBold';
+      font-weight: bold;
+      font-style: normal;
+      font-size: 5em;
+      position: relative;
+      &::after{
+        content: '';
+        width: 2px;
+        height: 5rem;
+        display: inline-block;
+        background-color: #4A4A4A;
         margin-left: 1rem;
         top: 0.5rem;
         position: relative;
       }
     }
   }
+
   .img-project{
-    width: 30%;
+    width: 35%;
+
+    .work1{
+      width: auto;
+      height: 100%;
+      background: url(../img/work01.jpg) no-repeat;
+      background-position: 15% 50%;
+      background-size: cover;
+    }
   }
+
   .description{
     width: 50%;
   }
@@ -213,9 +256,8 @@ article{
 
 footer{
   position: fixed;
-  width: calc(100vw - (2 * 50px));
-  height: 85px;
-  margin-left: 50px;
+  width: calc(100vw - (2 * 5%));
+  height: 10%;
   display: flex;
   align-items: center;
   bottom: 0;
@@ -233,11 +275,13 @@ footer{
       border-radius: 15px;
       background-color: grey;
     }
+    .dot:first-child{
+      margin-left: 0;
+    }
   }
 
   a{
     position: relative;
     font-size: 1.5em;
-
   }
 }

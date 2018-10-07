@@ -10100,7 +10100,13 @@ img.mfp-img {
   font-style: normal; }
 
 body {
-  margin: 0; }
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
 
 body.body--hidden {
   overflow: hidden; }
@@ -10117,9 +10123,8 @@ p {
 
 header {
   position: fixed;
-  width: calc(100vw - (2 * 50px));
-  height: 85px;
-  margin-left: 50px;
+  width: calc(100vw - (2 * 5%));
+  height: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10137,19 +10142,23 @@ header {
     header .div-logo .logo {
       width: auto;
       height: 20px; }
-  header .div-RS {
-    position: relative;
-    width: auto;
-    padding-right: 2rem; }
-    header .div-RS .RS {
-      height: 20px;
-      padding-right: 1rem; }
-  header .div-burger {
-    position: relative;
-    width: auto; }
-    header .div-burger .burger {
-      width: 40px;
-      height: 25px; }
+  header .picto-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    header .picto-header .div-RS {
+      position: relative;
+      width: auto;
+      padding-right: 2rem; }
+      header .picto-header .div-RS .RS {
+        height: 20px;
+        padding-right: 1rem; }
+    header .picto-header .div-burger {
+      position: relative;
+      width: auto; }
+      header .picto-header .div-burger .burger {
+        width: 40px;
+        height: 25px; }
 
 .div-middle {
   position: absolute;
@@ -10176,8 +10185,8 @@ header {
     top: 50%; }
 
 article {
-  top: 85px;
-  position: relative;
+  top: 10%;
+  position: absolute;
   height: calc(100vh - (2 * 85px));
   width: 100vw;
   display: -webkit-box;
@@ -10266,42 +10275,72 @@ article {
     font-size: 2em; }
 
 .container-fluid {
+  position: absolute;
   width: 90%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
   .container-fluid .nbr {
-    width: 20%;
-    border: 1px black solid;
+    width: 15%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
-    .container-fluid .nbr p {
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .container-fluid .nbr p:first-child {
+      color: #4A4A4A;
+      font-family: 'DINOT-CondBold';
+      font-weight: bold;
+      font-style: normal;
       font-size: 5em;
       position: relative; }
-      .container-fluid .nbr p::after {
+      .container-fluid .nbr p:first-child::after {
         content: '';
         width: 2px;
         height: 5rem;
         display: inline-block;
-        background-color: black;
+        background-color: #4A4A4A;
+        margin-left: 1rem;
+        top: 0.5rem;
+        position: relative; }
+    .container-fluid .nbr p:nth-child(n+2) {
+      color: #4A4A4A;
+      opacity: 0.1;
+      font-family: 'DINOT-CondBold';
+      font-weight: bold;
+      font-style: normal;
+      font-size: 5em;
+      position: relative; }
+      .container-fluid .nbr p:nth-child(n+2)::after {
+        content: '';
+        width: 2px;
+        height: 5rem;
+        display: inline-block;
+        background-color: #4A4A4A;
         margin-left: 1rem;
         top: 0.5rem;
         position: relative; }
   .container-fluid .img-project {
-    width: 30%; }
+    width: 35%; }
+    .container-fluid .img-project .work1 {
+      width: auto;
+      height: 100%;
+      background: url(../img/work01.jpg) no-repeat;
+      background-position: 15% 50%;
+      background-size: cover; }
   .container-fluid .description {
     width: 50%; }
 
 footer {
   position: fixed;
-  width: calc(100vw - (2 * 50px));
-  height: 85px;
-  margin-left: 50px;
+  width: calc(100vw - (2 * 5%));
+  height: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10326,6 +10365,8 @@ footer {
       width: 10px;
       border-radius: 15px;
       background-color: grey; }
+    footer .dots .dot:first-child {
+      margin-left: 0; }
   footer a {
     position: relative;
     font-size: 1.5em; }
