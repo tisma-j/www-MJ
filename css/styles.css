@@ -10175,7 +10175,7 @@ header {
     transform: translate(-50%, -50%);
     top: 50%; }
 
-.div-about {
+article {
   top: 85px;
   position: relative;
   height: calc(100vh - (2 * 85px));
@@ -10190,7 +10190,7 @@ header {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  .div-about .div-top {
+  article .div-top {
     top: 10%;
     width: 90%;
     height: 30%;
@@ -10204,7 +10204,7 @@ header {
     display: flex;
     -webkit-box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2); }
-    .div-about .div-top .div-droite, .div-about .div-top .div-gauche {
+    article .div-top .div-droite, article .div-top .div-gauche {
       -webkit-box-flex: 1;
       -ms-flex: 1;
       flex: 1;
@@ -10218,15 +10218,15 @@ header {
       -ms-flex-pack: center;
       justify-content: center;
       color: white; }
-    .div-about .div-top .div-gauche {
+    article .div-top .div-gauche {
       font-size: 1.5em; }
-    .div-about .div-top .div-droite {
+    article .div-top .div-droite {
       font-size: 2em; }
-  .div-about .txt-about {
+  article .txt-about {
     margin-top: 50px;
     width: 70%;
     height: 45%; }
-    .div-about .txt-about p:first-child {
+    article .txt-about p:first-child {
       font-family: 'DINOT';
       font-weight: bold;
       font-style: normal;
