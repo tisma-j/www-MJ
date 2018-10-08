@@ -10187,7 +10187,7 @@ header {
 article {
   top: 10%;
   position: absolute;
-  height: calc(100vh - (2 * 85px));
+  height: calc(100vh - (2 * 10%));
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10275,12 +10275,13 @@ article {
     font-size: 2em; }
 
 .container-fluid {
-  position: absolute;
+  position: relative;
   width: 90%;
-  height: auto;
+  height: calc(70% - (50px));
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  top: 50px; }
   .container-fluid .nbr {
     width: 15%;
     display: -webkit-box;
@@ -10327,7 +10328,8 @@ article {
         top: 0.5rem;
         position: relative; }
   .container-fluid .img-project {
-    width: 35%; }
+    width: 35%;
+    height: auto; }
     .container-fluid .img-project .work1 {
       width: auto;
       height: 100%;
