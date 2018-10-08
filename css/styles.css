@@ -10117,6 +10117,7 @@ h1, h2, h3, a {
   font-style: normal; }
 
 p {
+  color: #4A4A4A;
   font-family: 'DINOT';
   font-weight: normal;
   font-style: normal; }
@@ -10338,6 +10339,18 @@ article {
       background-size: cover; }
   .container-fluid .description {
     width: 50%; }
+    .container-fluid .description h3:first-child {
+      font-size: 3em;
+      position: relative;
+      color: #4A4A4A; }
+      .container-fluid .description h3:first-child::after {
+        content: '';
+        width: 5rem;
+        height: 2px;
+        display: inline-block;
+        background-color: #4A4A4A;
+        top: 2rem;
+        position: relative; }
 
 footer {
   position: fixed;

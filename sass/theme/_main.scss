@@ -15,6 +15,7 @@ h1, h2, h3, a{
 }
 
 p{
+  color: #4A4A4A;
   font-family: 'DINOT';
   font-weight: normal;
   font-style: normal;
@@ -249,6 +250,21 @@ article{
 
   .description{
     width: 50%;
+
+    h3:first-child{
+      font-size: 3em;
+      position: relative;
+      color: #4A4A4A;
+      &::after{
+        content: '';
+        width: 5rem;
+        height: 2px;
+        display: inline-block;
+        background-color: #4A4A4A;
+        top: 2rem;
+        position: relative;
+      }
+    }
   }
 }
 
