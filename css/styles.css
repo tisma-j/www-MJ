@@ -10188,7 +10188,7 @@ header {
 article {
   top: 10%;
   position: absolute;
-  height: calc(100vh - (2 * 10%));
+  height: calc(100vh - (10%));
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10309,7 +10309,7 @@ article {
         display: inline-block;
         background-color: #4A4A4A;
         margin-left: 1rem;
-        top: 0.5rem;
+        top: 0.750rem;
         position: relative; }
     .container-fluid .nbr p:nth-child(n+2) {
       color: #4A4A4A;
@@ -10322,11 +10322,10 @@ article {
       .container-fluid .nbr p:nth-child(n+2)::after {
         content: '';
         width: 2px;
-        height: 5rem;
+        height: 2.5rem;
         display: inline-block;
         background-color: #4A4A4A;
         margin-left: 1rem;
-        top: 0.5rem;
         position: relative; }
   .container-fluid .img-project {
     width: 35%;
@@ -10350,6 +10349,7 @@ article {
         display: inline-block;
         background-color: #4A4A4A;
         top: 2rem;
+        left: 0;
         position: relative; }
 
 footer {
