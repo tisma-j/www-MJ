@@ -159,7 +159,7 @@ article{
   width: 90%;
   height: 30%;
   background: url(../img/picture-work.jpg) no-repeat;
-  background-position: 50% 8%;
+  background-position: 0% 8%;
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
@@ -267,6 +267,38 @@ article{
     }
   }
 }
+
+
+    // WORK
+
+.div-top-career{
+  top: 10%;
+  width: 90%;
+  height: 30%;
+  background: url(../img/picture-career.jpg) no-repeat;
+  background-position: 50% 0%;
+  box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
+  background-size: cover;
+  display: flex;
+  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
+
+  .div-droite, .div-gauche{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .div-gauche{
+    font-size: 1.5em;
+  }
+
+  .div-droite{
+    font-size: 2em;
+  }
+}
+
 
     // FOOTER
 
