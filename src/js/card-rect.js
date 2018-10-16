@@ -11,7 +11,8 @@ var Card = (function(window, undefined) {
   var SELECTORS = {
     container: '.card__container',
     content: '.ajax-content',
-    clip: '.clip'
+    clip: '.clip',
+    letters: '.titre-section span'
   };
 
   /**
@@ -35,6 +36,7 @@ var Card = (function(window, undefined) {
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
     this._content = $('body').find(SELECTORS.content)[0];
+    this._letters = $('body').find(SELECTORS.letters);
 
     this.isOpen = false;
 
@@ -50,16 +52,18 @@ var Card = (function(window, undefined) {
     this._TL = new TimelineMax({id:'card'});
 
     var slideContentDown = this._slideContentDown();
-    var clipImageIn = this._clipImageIn();
+    //var clipImageIn = this._clipImageIn();
     var floatContainer = this._floatContainer(callback);
     var clipImageOut = this._clipImageOut();
+    var fallingLetters = this._fallingLetters();
     //var slideContentUp = this._slideContentUp();
 
     // Compose sequence and use duration to overlap tweens.
     this._TL.add(slideContentDown);
-    this._TL.add(clipImageIn, 0);
-   this._TL.add(floatContainer, '-=' + clipImageIn.duration() * 0.6);
-   this._TL.add(clipImageOut, '-=' + floatContainer.duration() * 0.5);
+    //this._TL.add(clipImageIn, 0);
+   this._TL.add(floatContainer, 0);
+   this._TL.add(fallingLetters, 0);
+   //this._TL.add(clipImageOut, floatContainer.duration());
    //this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
 
     //GSDevTools.create({id:"card"});
@@ -113,7 +117,7 @@ var Card = (function(window, undefined) {
     let TL            = new TimelineLite,
         rect          = this._container.getBoundingClientRect(),
         windowW       = window.innerWidth,
-        headerHeight  = appCDL.config.$siteHeaderHeight;
+        windowH       = window.innerHeight;
 
     var track = {
       width: 0,
@@ -131,16 +135,19 @@ var Card = (function(window, undefined) {
     });
 
     TL.to([this._container, track], 0.8, {
-      height: '500',
       x: windowW / 2,
-      y: headerHeight,
+      y: 0,
       xPercent: -50,
-      ease: Power1.easeOut,
+      height: windowH*.9*.3,
+      ease: Power2.easeOut,
       //clearProps: 'all',
-      className: '-=' + CLASSES.containerClosed
-    }).to([this._container, track], 0.8, {
-      width: windowW,
-      ease: Power1.easeOut
+      className: '-=' + CLASSES.containerClosed,
+    })
+    .to([this._container, track], 0.3, {
+      width: windowW * .9,
+      //clearProps: 'all',
+      className: '-=' + CLASSES.containerClosed,
+      ease: Expo.easeIn
     });
 
     return TL;
@@ -168,6 +175,18 @@ var Card = (function(window, undefined) {
     // var tween = this._clipImageIn();
 
     // tween.vars.attr.r = radius;
+
+    return tween;
+  };
+
+  /**
+   * Title letters falls
+   * @private
+   */
+  Card.prototype._fallingLetters = function() {
+    TweenMax.set(this._letters, {css:{
+          backfaceVisibility:"hidden"}});
+    var tween = TweenMax.to(this._letters, 2, {css:{rotationX:"+=180"}, ease:Power2.easeInOut});
 
     return tween;
   };

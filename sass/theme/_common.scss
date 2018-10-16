@@ -85,31 +85,12 @@ body {
  		display:none;
  	}
     .titre-section {
-        font-size: 4rem;
+        font-size: 26vw;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%);
-        
+        font-family: times;
     }
  }
 
  .edit-link {
  	display: none;
  }
-
- .swiper-container {
-    width: 100%;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-}
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

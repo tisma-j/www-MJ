@@ -3,7 +3,7 @@
 /**
  * Demo.
  */
-var trasitionPages = (function(window, undefined) {
+var transitionPages = (function(window, undefined) {
 
   /**
    * Enum of CSS selectors.
@@ -23,7 +23,7 @@ var trasitionPages = (function(window, undefined) {
   var layout = {};
 
   /**
-   * Initialise trasitionPages.
+   * Initialise transitionPages.
    */
   function init() {
 
@@ -78,7 +78,7 @@ var trasitionPages = (function(window, undefined) {
 
     var tweenOtherCards = _showHideOtherCards(id);
 
-    var tweenAjaxContent = _showContent();
+    //var tweenAjaxContent = _showContent();
 
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
@@ -86,6 +86,7 @@ var trasitionPages = (function(window, undefined) {
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
       sequence.call(_switchSwiperSlider, 0);
+      //sequence.add(tweenAjaxContent);
 
     } else {
       // Close sequence.
@@ -139,8 +140,15 @@ var trasitionPages = (function(window, undefined) {
    */
   function _showContent() {
 
-    var tween = TweenLite.to($(SELECTORS.ajaxContent), 1, {
+    var tween = new TimelineLite;
+
+    tween.set($(SELECTORS.ajaxContent), {
+      y: window.innerHeight,
+      alpha:0
+    })
+    .to($(SELECTORS.ajaxContent), 10, {
       y: 0,
+      alpha:1,
       clearProps: 'all',
       ease: Expo.easeInOut
     });
@@ -204,5 +212,5 @@ var trasitionPages = (function(window, undefined) {
 
 })(window);
 
-// Kickstart trasitionPages.
-window.onload = trasitionPages.init;
+// Kickstart transitionPages.
+window.onload = transitionPages.init;

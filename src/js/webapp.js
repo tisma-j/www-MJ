@@ -56,7 +56,7 @@ var appCDL = null;
 				$mobileMenuBreakpoint   : 992,
 
 				// Header
-				$siteHeader             : $( '.navbar' ),
+				$siteHeader             : $('header'),
 				$siteHeaderStyle        : null,
 				$siteHeaderHeight       : 0,
 				$siteHeaderTop          : 0,
@@ -291,16 +291,14 @@ var appCDL = null;
 				        	// tl.staggerTo(elts2anim, 0.8, {yPercent:10, onComplete:next}, 0.5);
 				        	let loader = $('.site-loader');
 				        	loader.addClass('is-visible');
+				        	$('#page').removeClass('is-visible');
 							setTimeout(next, 2000);
 				        },
 				        in: function (next) {
 				        	let loader = $('.site-loader');
 				        	loader.removeClass('is-visible');
 				        	$('body').addClass('is-loaded');
-				        	  var tween = TweenLite.to($('.ajax-content'), 1, {
-				        	    y: 0,
-				        	    ease: Expo.easeInOut
-				        	  });
+				        	$('#page').addClass('is-visible');
 
 				        	Delighters.init();
 				        }
@@ -488,28 +486,30 @@ var appCDL = null;
 					self.config.$swiperHome = mySwiper;
 					//gestion des evenements
 					// bind event and callback
-					var switchSwiperObj = onfire.on('switch_swiper', self.swithSwiper);
+					var switchSwiperObj = onfire.on('switch_swiper', self.switchSwiper);
 				}
 			);
 		},
 
 		/**
-		 * swithSwiper
+		 * switchSwiper
 		 *
 		 * @description: cache swiper pour affichage en ajax de la page appelée
 		 * @since 1.0.0
 		 */
-		swithSwiper : function( swiperState ) {
+		switchSwiper : function( swiperState ) {
 
 			var self = this;
 			switch (swiperState) {
 			  case 'disable':
 				console.log('appel de l evenement swiper en disable : ' + swiperState );
 				$('.swiper-container').css('max-height', '500px');
+				$('.swiper-pagination').css('display', 'none');
 			    break;
 			  case 'enable':
 			  default:
 				$('.swiper-container').css('max-height', 'auto');
+				$('.swiper-pagination').css('display', 'block');
 			}
 		},
 
