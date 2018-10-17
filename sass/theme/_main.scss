@@ -109,7 +109,6 @@ header{
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
-  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;
@@ -236,7 +235,6 @@ align-items: center;
       display: flex;
       align-items: center;
       flex-direction: column;
-
   }
 
   .div-top-about{
@@ -248,7 +246,6 @@ align-items: center;
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
-  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
 
     .div-droite, .div-gauche{
     flex: 1;
@@ -290,10 +287,8 @@ align-items: center;
   height: 30%;
   background: url(../img/picture-career.jpg) no-repeat;
   background-position: 50% 0%;
-  box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
-  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;
