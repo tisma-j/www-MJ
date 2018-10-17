@@ -15,6 +15,11 @@
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
+      .titre-section {
+        span {
+          display: inline-block;
+        }
+      }
 	}
 }
 
@@ -22,14 +27,28 @@
  * AJAX CONTENT
  */
 #page {
-	opacity: 0;
+	opacity: 1;
 	transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-	transform: translateY(10%);
-	&.is-visible {
-		opacity: 1;
-		transform: translateY(0);
+	transform: translateY(0%);
+	&.is-invisible {
+		opacity: 0;
+		transform: translateY(10%);
 	}
 }
+
+/*
+ * NAVBAR
+ */
+ .Navbar__Items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  display: none;
+}
+.Navbar__ToggleShow {
+  display: flex;
+  }
 
 /*
  * MAGNIFIC POPUP

@@ -183,10 +183,16 @@ var Card = (function(window, undefined) {
    * Title letters falls
    * @private
    */
-  Card.prototype._fallingLetters = function() {
+  Card.prototype._fallingLetters = function() { 
+    TweenMax.set('.swiper-slide', {css:{
+      transformStyle:"preserve-3d",
+      perspective: 500,
+      z:0
+    }});
+    
     TweenMax.set(this._letters, {css:{
           backfaceVisibility:"hidden"}});
-    var tween = TweenMax.to(this._letters, 2, {css:{rotationX:"+=180"}, ease:Power2.easeInOut});
+    var tween = TweenMax.staggerTo(this._letters, 0.8, {rotationY:"-=90", transformOrigin: 'center', transformStyle:'preserve-3d', ease:Power2.easeInOut}, 0.1);
 
     return tween;
   };
@@ -596,7 +602,10 @@ var appCDL = null;
 				// init Page Transitions
 				self.initPageTransitions();
 
-				//lightGallery($('a[href*=".png"], a[href*=".gif"], a[href*=".jpg"]'));
+				$('.Navbar__Link-toggle').on('click', function(event) {
+					event.preventDefault();
+					$('.Navbar__Items').toggleClass('Navbar__ToggleShow');
+				});
 
 				// Owl Carousel2 Thumbs
 				//self.owlCarouselThumb();
@@ -780,14 +789,14 @@ var appCDL = null;
 				        	// tl.staggerTo(elts2anim, 0.8, {yPercent:10, onComplete:next}, 0.5);
 				        	let loader = $('.site-loader');
 				        	loader.addClass('is-visible');
-				        	$('#page').removeClass('is-visible');
+				        	$('#page').addClass('is-invisible');
 							setTimeout(next, 2000);
 				        },
 				        in: function (next) {
 				        	let loader = $('.site-loader');
 				        	loader.removeClass('is-visible');
-				        	$('body').addClass('is-loaded');
-				        	$('#page').addClass('is-visible');
+				        	//$('body').addClass('is-loaded');
+				        	$('#page').removeClass('is-invisible');
 
 				        	Delighters.init();
 				        }

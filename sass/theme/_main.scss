@@ -27,6 +27,7 @@ header{
   height: 10%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   img{
     position: relative;
@@ -109,7 +110,6 @@ header{
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
-  box-shadow: 20px 20px 30px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;

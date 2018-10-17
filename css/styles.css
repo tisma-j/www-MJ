@@ -10088,7 +10088,9 @@ header {
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
   header img {
     position: relative; }
   header .div-logo {
@@ -10151,9 +10153,7 @@ header {
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-          box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2); }
+  display: flex; }
   .div-top-work .div-droite, .div-top-work .div-gauche {
     -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -10514,22 +10514,46 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
+    .swiper-container .swiper-slide .titre-section span {
+      display: inline-block; }
 
 /*
  * AJAX CONTENT
  */
 #page {
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out;
   transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out;
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   transition: opacity 0.3s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  -webkit-transform: translateY(10%);
-          transform: translateY(10%); }
-  #page.is-visible {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0); }
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%); }
+  #page.is-invisible {
+    opacity: 0;
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%); }
+
+/*
+ * NAVBAR
+ */
+.Navbar__Items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  display: none; }
+
+.Navbar__ToggleShow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 
 /*
  * MAGNIFIC POPUP
