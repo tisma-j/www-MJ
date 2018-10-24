@@ -8,6 +8,14 @@ body.body--hidden {
   overflow: hidden;
 }
 
+.titre-section > span{
+  font-family: 'DINOT-CondBold';
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: 50px;
+  color: rgba(74, 74, 74, 0.1);
+}
+
 h1, h2, h3, a{
   font-family: 'DINOT-CondBold';
   font-weight: bold;
@@ -19,6 +27,7 @@ p{
   font-family: 'DINOT';
   font-weight: normal;
   font-style: normal;
+  font-size: 1.125em;
 }
 
 header{
@@ -107,9 +116,12 @@ header{
   height: 30%;
   background: url(../img/picture-work.jpg) no-repeat;
   background-position: 50% 80%;
-  box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
+  box-shadow:
+    inset 100vh 100vw rgba(0,0,0,0.2),
+    20px 20px 20px rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
+  // box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;
@@ -196,9 +208,10 @@ header{
   .description{
     width: 50%;
     padding-left: 40px;
+    padding-top: 30px;
 
     h3:first-child{
-      font-size: 3em;
+      font-size: 4em;
       position: relative;
       color: #4A4A4A;
       padding-bottom: 50px;
@@ -209,16 +222,47 @@ header{
         display: inline-block;
         background-color: #4A4A4A;
         top: 30px;
-        right: 300px;
+        // right: 400px;
         position: relative;
       }
     }
 
     .bouton-project{
+      position: relative;
       height: 50px;
-      width: 100px;
-      background: linear-gradient(to right, #FFFFFF, #FFFFFF 50%, #979797 50% #979797 100%);
+      width: 110px;
+      background-color: rgba(74, 74, 74, 0.1);
+      left: 40px;
+    }
 
+    .bouton-project:hover{
+      animation: animbtn 0.4s forwards;
+    }
+
+    @keyframes animbtn{
+      100%{
+        width: 0;
+        transition: ease;
+      }
+    }
+
+    .txt-btn{
+      z-index: 1;
+      letter-spacing: 2px;
+      font-size: 1.5em;
+      font-family: 'DINOT';
+      font-weight: normal;
+      font-style: normal;
+      position: absolute;
+    }
+
+    img{
+      z-index: 1;
+      top: 35px;
+      left: 110px;
+      height: 30px;
+      position: relative;
+      transform: rotate(270deg);
     }
   }
 }
@@ -255,6 +299,8 @@ align-items: center;
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+
 
     .div-droite, .div-gauche{
     flex: 1;
@@ -298,6 +344,7 @@ align-items: center;
   background-position: 50% 0%;
   background-size: cover;
   display: flex;
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;
@@ -317,6 +364,36 @@ align-items: center;
 }
 
 
+// CAREER
+
+.div-top-gallery{
+  top: 10%;
+  width: 90%;
+  height: 30%;
+  background: url(../img/picture-gallery.jpg) no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  display: flex;
+  box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+
+
+  .div-droite, .div-gauche{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .div-gauche{
+    font-size: 1.5em;
+  }
+
+  .div-droite{
+    font-size: 2em;
+  }
+}
     // FOOTER
 
 footer{
