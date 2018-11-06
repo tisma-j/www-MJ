@@ -10201,8 +10201,8 @@ header {
   height: 30%;
   background: url(../img/picture-work.jpg) no-repeat;
   background-position: 50% 80%;
-  -webkit-box-shadow: inset 100vh 100vw rgba(0, 0, 0, 0.2), 20px 20px 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 100vh 100vw rgba(0, 0, 0, 0.2), 20px 20px 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 100vh 100vw rgba(0, 0, 0, 0.2);
+  box-shadow: inset 100vh 100vw rgba(0, 0, 0, 0.2);
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10293,16 +10293,15 @@ header {
     padding-top: 30px; }
     .container-fluid .description h3:first-child {
       font-size: 4em;
-      position: relative;
       color: #4A4A4A;
       padding-bottom: 50px; }
       .container-fluid .description h3:first-child::after {
         content: '';
         width: 5rem;
         height: 2px;
-        display: inline-block;
+        display: block;
         background-color: #4A4A4A;
-        top: 30px;
+        top: 20px;
         position: relative; }
     .container-fluid .description .bouton-project {
       position: relative;
@@ -10843,12 +10842,11 @@ video {
   transition: box-shadow 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
   -webkit-transform: translate3d(0, 0, 0);
   /* prevents flicker */
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  -webkit-box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2); }
   .debug .card__container {
     background-color: blue; }
-  .card__container:not(.card__container--closed) {
-    -webkit-box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2); }
 
 .card__container--closed {
   position: absolute;

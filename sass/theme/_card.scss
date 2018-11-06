@@ -35,9 +35,7 @@
 	.debug & {
 		background-color: blue;
 	}
-	&:not(.card__container--closed) {
 		box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-	}
 }
 
 .card__container--closed {

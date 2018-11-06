@@ -116,12 +116,9 @@ header{
   height: 30%;
   background: url(../img/picture-work.jpg) no-repeat;
   background-position: 50% 80%;
-  box-shadow:
-    inset 100vh 100vw rgba(0,0,0,0.2),
-    20px 20px 20px rgba(0,0,0,0.2);
+  box-shadow: inset 100vh 100vw rgba(0,0,0,0.2);
   background-size: cover;
   display: flex;
-  // box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
 
   .div-droite, .div-gauche{
     flex: 1;
@@ -212,17 +209,15 @@ header{
 
     h3:first-child{
       font-size: 4em;
-      position: relative;
       color: #4A4A4A;
       padding-bottom: 50px;
       &::after{
         content: '';
         width: 5rem;
         height: 2px;
-        display: inline-block;
+        display: block;
         background-color: #4A4A4A;
-        top: 30px;
-        // right: 400px;
+        top: 20px;
         position: relative;
       }
     }
