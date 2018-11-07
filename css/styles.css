@@ -10168,7 +10168,7 @@ header {
       position: relative;
       width: auto; }
       header .picto-header .div-burger .burger {
-        width: 40px;
+        width: auto;
         height: 25px; }
 
 .div-middle {
@@ -10684,7 +10684,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: none;
-  background-color: blue; }
+  background-color: red; }
 
 .Navbar__ToggleShow {
   display: -webkit-box;
