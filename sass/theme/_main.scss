@@ -37,6 +37,15 @@ header{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  transition: width 0.4s ease-out;
+  z-index: 999;
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  &.nav-open {
+    width: 100%;
+  }
 
   img{
     position: relative;
