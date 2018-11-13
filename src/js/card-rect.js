@@ -36,7 +36,7 @@ var Card = (function(window, undefined) {
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
     this._content = $('body').find(SELECTORS.content)[0];
-    this._letters = $('body').find(SELECTORS.letters);
+    this._letters = $(this._el).parent('.swiper-slide').find(SELECTORS.letters);
 
     this.isOpen = false;
 

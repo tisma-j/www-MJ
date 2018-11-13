@@ -36,7 +36,7 @@ var Card = (function(window, undefined) {
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
     this._content = $('body').find(SELECTORS.content)[0];
-    this._letters = $('body').find(SELECTORS.letters);
+    this._letters = $(this._el).parent('.swiper-slide').find(SELECTORS.letters);
 
     this.isOpen = false;
 
@@ -975,10 +975,14 @@ var appCDL = null;
 					    slidesPerView: 1,
 					    spaceBetween: 0,
 					    mousewheel: true,
-					    effect: 'fade',
+					    //effect: 'fade',
 					    pagination: {
-					      el: '.swiper-pagination',
+					      
+					      el: '.dots',
 					      clickable: true,
+					      renderBullet: function (index, className) {
+					        return '<div class="dot ' + className + '"></div>';
+					      },
 					    },
 					});
 					self.config.$swiperHome = mySwiper;

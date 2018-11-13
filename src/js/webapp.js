@@ -480,10 +480,14 @@ var appCDL = null;
 					    slidesPerView: 1,
 					    spaceBetween: 0,
 					    mousewheel: true,
-					    effect: 'fade',
+					    //effect: 'fade',
 					    pagination: {
-					      el: '.swiper-pagination',
+					      
+					      el: '.dots',
 					      clickable: true,
+					      renderBullet: function (index, className) {
+					        return '<div class="dot ' + className + '"></div>';
+					      },
 					    },
 					});
 					self.config.$swiperHome = mySwiper;
