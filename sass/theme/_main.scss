@@ -149,15 +149,41 @@ header{
 .container-fluid {
   position: relative;
   width: 90%;
-  height: calc(70% - (50px));
+  height:  calc(70% - (50px));
   display: flex;
   top: 50px;
+
 
   .nbr{
     width: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .nbr-work{
+      cursor: pointer;
+    }
+
+    .nbr2:active > .project2{
+      p:nth-child(2){
+        color: #4A4A4A;
+        opacity: 0.1;
+        font-family: 'DINOT-CondBold';
+        font-weight: bold;
+        font-style: normal;
+        font-size: 5em;
+        position: relative;
+        &::after{
+          content: '';
+          width: 2px;
+          height: 2.5rem;
+          display: inline-block;
+          background-color: #4A4A4A;
+          margin-left: 1rem;
+          position: relative;
+        }
+      }
+    }
 
     p:first-child{
       color: #4A4A4A;
@@ -202,12 +228,24 @@ header{
     width: 35%;
     height: auto;
 
-    .work1{
+    .project1{
       width: auto;
       height: 100%;
-      background: url(../img/work01.jpg) no-repeat;
+      background: url(../img/work/work01.jpg) no-repeat;
       background-position: 15% 50%;
       background-size: cover;
+    }
+
+    .project2{
+      background: url(../img/work/work02.png) no-repeat;
+      background-position: 15% 50%;
+      opacity: 0;
+    }
+
+    .project3{
+      background: url(../img/work/work02.jpg) no-repeat;
+      background-position: 15% 50%;
+      opacity: 0;
     }
   }
 
@@ -233,40 +271,44 @@ header{
 
     .bouton-project{
       position: relative;
-      height: 50px;
-      width: 110px;
-      background-color: rgba(74, 74, 74, 0.1);
-      left: 40px;
-    }
+      height: 40px;
+      width: 150px;
+      border: 2px solid rgba(74, 74, 74, 0.1);
+      background-color: rgba(74, 74, 74, 0);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      text-decoration: none;
+      margin-top: 50px;
 
-    .bouton-project:hover{
-      animation: animbtn 0.4s forwards;
-    }
-
-    @keyframes animbtn{
-      100%{
+      .jauge-remplissage{
+        transition: all 0.2s linear;
+        background-color: rgba(74, 74, 74, 0.1);
         width: 0;
-        transition: ease;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+
+      .txt-btn{
+        z-index: 1;
+        letter-spacing: 2px;
+        font-size: 1.125em;
+        font-family: 'DINOT';
+        font-weight: normal;
+        font-style: normal;
+        margin-bottom: 5px;
+      }
+
+      img{
+        height: 10px;
       }
     }
 
-    .txt-btn{
-      z-index: 1;
-      letter-spacing: 2px;
-      font-size: 1.5em;
-      font-family: 'DINOT';
-      font-weight: normal;
-      font-style: normal;
-      position: absolute;
-    }
-
-    img{
-      z-index: 1;
-      top: 35px;
-      left: 110px;
-      height: 30px;
-      position: relative;
-      transform: rotate(270deg);
+    .bouton-project:hover .jauge-remplissage{
+    width: 100%;
     }
   }
 }
