@@ -159,6 +159,9 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: scroll;
+    height: 100%;
+    text-decoration: none;
 
     .nbr-work{
       cursor: pointer;
@@ -224,92 +227,103 @@ header{
     }
   }
 
-  .img-project{
-    width: 35%;
+  .projects{
+    width: 85%;
     height: auto;
 
     .project1{
-      width: auto;
+      width: 100%;
       height: 100%;
-      background: url(../img/work/work01.jpg) no-repeat;
-      background-position: 15% 50%;
-      background-size: cover;
-    }
-
-    .project2{
-      background: url(../img/work/work02.png) no-repeat;
-      background-position: 15% 50%;
-      opacity: 0;
-    }
-
-    .project3{
-      background: url(../img/work/work02.jpg) no-repeat;
-      background-position: 15% 50%;
-      opacity: 0;
-    }
-  }
-
-  .description{
-    width: 50%;
-    padding-left: 40px;
-    padding-top: 30px;
-
-    h3:first-child{
-      font-size: 4em;
-      color: #4A4A4A;
-      padding-bottom: 50px;
-      &::after{
-        content: '';
-        width: 5rem;
-        height: 2px;
-        display: block;
-        background-color: #4A4A4A;
-        top: 20px;
-        position: relative;
-      }
-    }
-
-    .bouton-project{
-      position: relative;
-      height: 40px;
-      width: 150px;
-      border: 2px solid rgba(74, 74, 74, 0.1);
-      background-color: rgba(74, 74, 74, 0);
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      text-decoration: none;
-      margin-top: 50px;
 
-      .jauge-remplissage{
-        transition: all 0.2s linear;
-        background-color: rgba(74, 74, 74, 0.1);
-        width: 0;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
+      .img-project{
+        height: auto;
+        flex: 1;
+
+        .img-project1{
+          width: auto;
+          height: 100%;
+          background: url(../img/work/work01.jpg) no-repeat;
+          background-position: 15% 50%;
+          background-size: cover;
         }
 
-      .txt-btn{
-        z-index: 1;
-        letter-spacing: 2px;
-        font-size: 1.125em;
-        font-family: 'DINOT';
-        font-weight: normal;
-        font-style: normal;
-        margin-bottom: 5px;
+        .img-project2{
+          background: url(../img/work/work02.png) no-repeat;
+          background-position: 15% 50%;
+          opacity: 0;
+        }
+
+        .img-project3{
+          background: url(../img/work/work03.jpg) no-repeat;
+          background-position: 15% 50%;
+          opacity: 0;
+        }
       }
 
-      img{
-        height: 10px;
-      }
-    }
+      .description{
+        width: 50%;
+        padding-left: 40px;
+        padding-top: 30px;
 
-    .bouton-project:hover .jauge-remplissage{
-    width: 100%;
-    }
+        h3:first-child{
+          font-size: 4em;
+          color: #4A4A4A;
+          padding-bottom: 50px;
+          &::after{
+            content: '';
+            width: 5rem;
+            height: 2px;
+            display: block;
+            background-color: #4A4A4A;
+            top: 20px;
+            position: relative;
+          }
+        }
+
+        .bouton-project{
+          position: relative;
+          height: 40px;
+          width: 150px;
+          border: 2px solid rgba(74, 74, 74, 0.1);
+          background-color: rgba(74, 74, 74, 0);
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          text-decoration: none;
+          margin-top: 50px;
+
+          .jauge-remplissage{
+            transition: all 0.2s linear;
+            background-color: rgba(74, 74, 74, 0.1);
+            width: 0;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            }
+
+          .txt-btn{
+            z-index: 1;
+            letter-spacing: 2px;
+            font-size: 1.125em;
+            font-family: 'DINOT';
+            font-weight: normal;
+            font-style: normal;
+            margin-bottom: 5px;
+          }
+
+          img{
+            height: 10px;
+          }
+        }
+
+        .bouton-project:hover .jauge-remplissage{
+        width: 100%;
+        }
+      }
+    }  
   }
 }
 
