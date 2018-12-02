@@ -280,37 +280,59 @@ var appCDL = null;
 		 */
 		initBurger: function() {
 			var divrandom = document.querySelectorAll(".Navbar__Link");
-			var genRandomPosition = function() {
-			   return {
-			    left: Math.random() * window.innerWidth,
-			    top: Math.random() * window.innerHeight
-			  };
+			var num = divrandom.length;
+			console.log('count:'+num);
+			var genRandomPosition = function(index) {
+			   return {
+			    left: Math.random() * window.innerWidth,
+			    top: Math.random() * window.innerHeight
+			  };
 			}
-
 
 			$('.Navbar__Link-toggle').on('click', function(event) {
 				event.preventDefault();
 				$('.Navbar__Items').toggleClass('Navbar__ToggleShow');
 				$('header').toggleClass('nav-open');
-				divrandom.forEach(function(d) {
-					var currentPosition = genRandomPosition();
-					d.style.left = currentPosition.left.toFixed(2) + 'px';
-					d.style.top = currentPosition.top.toFixed(2) + 'px';
-				});
+			  if( $('header').hasClass('nav-open') ) { 
+			    positionnerMenu();
+			  }
 			});
 
-			var burgerMenu = document.querySelector(".burger");
-			burgerMenu.addEventListener("click", function() {
-			  console.log(divrandom);
+			function positionnerMenu() {
+			  divrandom.forEach(function(d, i) {
+			    var currentPosition = genRandomPosition(i);
+			    d.style.left = currentPosition.left.toFixed(2) + 'px';
+			    d.style.top = currentPosition.top.toFixed(2) + 'px';
+			    console.log('index', i);
+			    var pos=d.getBoundingClientRect();
+			    while ((((pos.width + currentPosition.left) > window.innerWidth) || ((pos.height + currentPosition.top) > window.innerHeight) || isOverlapping(i,currentPosition))) {
+			      currentPosition = genRandomPosition();
+			      d.style.left = currentPosition.left.toFixed(2) + 'px';
+			      d.style.top = currentPosition.top.toFixed(2) + 'px';
+			    }
 
-			  document.querySelector("nav").classList.toggle("visible");
-			  divrandom.forEach(function(d) {
-			    var currentPosition = genRandomPosition();
-			    console.log(currentPosition);
-			    d.style.left = currentPosition.left.toFixed(2) + 'px';
-			    d.style.top = currentPosition.top.toFixed(2) + 'px';
-			  });
-			});
+			  });
+			}
+
+			function isOverlapping(index, currentPosition) {
+			  var overlap = false;
+			  var rect1 = divrandom[index].getBoundingClientRect();
+			  console.log('rectBase',divrandom[index]);
+			  for(var i = index-1; i >= 0; i--) {
+			       var rect2 = divrandom[i].getBoundingClientRect();
+			      console.log('loopRect',divrandom[i]);
+			       window.console ? console.log(rect1, rect2 ) : null ;
+			       overlap = !(
+			               rect1.right < rect2.left+20 || 
+			               rect1.left > rect2.right+20 || 
+			               rect1.bottom < rect2.top+20 || 
+			               rect1.top > rect2.bottom+20
+			             )
+			       console.log('overlap',overlap);
+			       if (overlap) return overlap;
+			  }
+			  return overlap;
+			}
 		},
 
 		/**

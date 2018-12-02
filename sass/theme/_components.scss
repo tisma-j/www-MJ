@@ -52,22 +52,41 @@
   justify-content: space-evenly;
   width: 100vw;
   height: 100vh;
-  display: none;
   background-color: white;
-  position: absolute;
+  transform: translateY(-100vh);
+  transition: transform 0.4s ease-out;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
   .Navbar__Link {
-    transition: all 2s ease-out;
+    //transition: all 2s ease-out;
     position: absolute;
   }
 }
 .Navbar__ToggleShow {
-  display: flex;
+  transform: translateY(0);
   }
+
+.Navbar__Link{
+  position: absolute;
+  opacity: 0;
+  transition: opacity ease 0s;
+  border: 1px black solid;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 2.2rem;
+  .Navbar__ToggleShow & {
+    opacity: 1;
+    transition: opacity ease 0.4s 0.4s;
+  }
+}
 
 /*
  * MAGNIFIC POPUP
