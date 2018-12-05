@@ -224,21 +224,42 @@ header{
     }
   }
 
+
+
+
+
   .projects{
+    position: relative;
     width: 85%;
     height: auto;
 
     .project{
+      position: absolute;
       width: 100%;
       height: 100%;
       display: flex;
 
-      .img-project{
+      .project.current{
+        .img-project{
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .div-img-project{
         height: auto;
         flex: 1;
+        overflow: hidden;
+
+        .img-project{
+          transform: translateX(-100%);
+          opacity: 0;
+          transition: all 1s;
+
+        }
 
         .img-project1{
-          width: auto;
+          width: 100%;
           height: 100%;
           background: url(../img/work/work01.jpg) no-repeat;
           background-position: 15% 50%;
@@ -248,13 +269,11 @@ header{
         .img-project2{
           background: url(../img/work/work02.png) no-repeat;
           background-position: 15% 50%;
-          opacity: 0;
         }
 
         .img-project3{
           background: url(../img/work/work03.jpg) no-repeat;
           background-position: 15% 50%;
-          opacity: 0;
         }
       }
 
