@@ -10306,6 +10306,11 @@ header {
         background-color: #4A4A4A;
         margin-left: 1rem;
         position: relative; }
+  .container-fluid .project.current > .div-img-project .img-project {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1; }
   .container-fluid .projects {
     position: relative;
     width: 85%;
@@ -10317,11 +10322,6 @@ header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; }
-      .container-fluid .projects .project .project.current .img-project {
-        -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1; }
       .container-fluid .projects .project .div-img-project {
         height: auto;
         -webkit-box-flex: 1;

@@ -225,7 +225,12 @@ header{
   }
 
 
-
+  .project.current > .div-img-project{
+    .img-project{
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 
 
   .projects{
@@ -239,13 +244,6 @@ header{
       height: 100%;
       display: flex;
 
-      .project.current{
-        .img-project{
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
       .div-img-project{
         height: auto;
         flex: 1;
@@ -255,7 +253,6 @@ header{
           transform: translateX(-100%);
           opacity: 0;
           transition: all 1s;
-
         }
 
         .img-project1{
