@@ -10258,7 +10258,7 @@ header {
     text-decoration: none; }
     .container-fluid .nbr .nbr-work {
       cursor: pointer; }
-    .container-fluid .nbr .nbr2:active > .project2 p:nth-child(2) {
+    .container-fluid .nbr p.nbr-work {
       color: #4A4A4A;
       opacity: 0.1;
       font-family: 'DINOT-CondBold';
@@ -10266,7 +10266,7 @@ header {
       font-style: normal;
       font-size: 5em;
       position: relative; }
-      .container-fluid .nbr .nbr2:active > .project2 p:nth-child(2)::after {
+      .container-fluid .nbr p.nbr-work::after {
         content: '';
         width: 2px;
         height: 2.5rem;
@@ -10274,43 +10274,12 @@ header {
         background-color: #4A4A4A;
         margin-left: 1rem;
         position: relative; }
-    .container-fluid .nbr p:first-child {
-      color: #4A4A4A;
-      font-family: 'DINOT-CondBold';
-      font-weight: bold;
-      font-style: normal;
-      font-size: 5em;
-      position: relative; }
-      .container-fluid .nbr p:first-child::after {
+    .container-fluid .nbr p.active {
+      opacity: 1; }
+      .container-fluid .nbr p.active::after {
         content: '';
-        width: 2px;
         height: 5rem;
-        display: inline-block;
-        background-color: #4A4A4A;
-        margin-left: 1rem;
-        top: 0.750rem;
-        position: relative; }
-    .container-fluid .nbr p:nth-child(n+2) {
-      color: #4A4A4A;
-      opacity: 0.1;
-      font-family: 'DINOT-CondBold';
-      font-weight: bold;
-      font-style: normal;
-      font-size: 5em;
-      position: relative; }
-      .container-fluid .nbr p:nth-child(n+2)::after {
-        content: '';
-        width: 2px;
-        height: 2.5rem;
-        display: inline-block;
-        background-color: #4A4A4A;
-        margin-left: 1rem;
-        position: relative; }
-  .container-fluid .project.current > .div-img-project .img-project {
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1; }
+        top: 0.750rem; }
   .container-fluid .projects {
     position: relative;
     width: 85%;
@@ -10323,35 +10292,78 @@ header {
       display: -ms-flexbox;
       display: flex; }
       .container-fluid .projects .project .div-img-project {
+        z-index: 1;
+        position: relative;
         height: auto;
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
         overflow: hidden; }
         .container-fluid .projects .project .div-img-project .img-project {
+          position: relative;
           -webkit-transform: translateX(-100%);
           -ms-transform: translateX(-100%);
           transform: translateX(-100%);
           opacity: 0;
-          -webkit-transition: all 1s;
-          -o-transition: all 1s;
-          transition: all 1s; }
-        .container-fluid .projects .project .div-img-project .img-project1 {
+          z-index: 2;
+          -webkit-transition: opacity 0.4s ease, -webkit-transform 0s ease 0.4s;
+          transition: opacity 0.4s ease, -webkit-transform 0s ease 0.4s;
+          -o-transition: opacity 0.4s ease, transform 0s ease 0.4s;
+          transition: opacity 0.4s ease, transform 0s ease 0.4s;
+          transition: opacity 0.4s ease, transform 0s ease 0.4s, -webkit-transform 0s ease 0.4s;
           width: 100%;
           height: 100%;
-          background: url(../img/work/work01.jpg) no-repeat;
-          background-position: 15% 50%;
-          background-size: cover; }
+          background-size: cover;
+          background-repeat: no-repeat; }
+        .container-fluid .projects .project .div-img-project .img-project1 {
+          background-image: url(../img/work/work01.jpg);
+          background-position: 50% 50%; }
         .container-fluid .projects .project .div-img-project .img-project2 {
-          background: url(../img/work/work02.png) no-repeat;
+          background-image: url(../img/work/work02.jpg);
           background-position: 15% 50%; }
         .container-fluid .projects .project .div-img-project .img-project3 {
-          background: url(../img/work/work03.jpg) no-repeat;
-          background-position: 15% 50%; }
+          background-image: url(../img/work/work03.png);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project4 {
+          background-image: url(../img/work/work04.jpg);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project5 {
+          background-image: url(../img/work/work05.png);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project6 {
+          background-image: url(../img/work/work06.png);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project7 {
+          background-image: url(../img/work/work07.jpg);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project8 {
+          background-image: url(../img/work/work08.jpg);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project9 {
+          background-image: url(../img/work/work09.png);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project10 {
+          background-image: url(../img/work/work10.jpg);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project11 {
+          background-image: url(../img/work/work11.jpg);
+          background-position: 50% 50%; }
+        .container-fluid .projects .project .div-img-project .img-project12 {
+          background-image: url(../img/work/work12.jpg);
+          background-position: 50% 50%; }
       .container-fluid .projects .project .description {
         width: 50%;
         padding-left: 40px;
-        padding-top: 30px; }
+        padding-top: 30px;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        opacity: 0;
+        -webkit-transition: opacity 0.4s ease, -webkit-transform 0s ease 0.4s;
+        transition: opacity 0.4s ease, -webkit-transform 0s ease 0.4s;
+        -o-transition: opacity 0.4s ease, transform 0s ease 0.4s;
+        transition: opacity 0.4s ease, transform 0s ease 0.4s;
+        transition: opacity 0.4s ease, transform 0s ease 0.4s, -webkit-transform 0s ease 0.4s; }
         .container-fluid .projects .project .description h3:first-child {
           font-size: 4em;
           color: #4A4A4A;
@@ -10406,6 +10418,18 @@ header {
             height: 10px; }
         .container-fluid .projects .project .description .bouton-project:hover .jauge-remplissage {
           width: 100%; }
+  .container-fluid .project.current .img-project, .container-fluid .project.current .description {
+    -webkit-transform: translateX(0) !important;
+    -ms-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    -webkit-transition: 0.8s !important;
+    -o-transition: 0.8s !important;
+    transition: 0.8s !important; }
+  .container-fluid .project.current .description {
+    -webkit-transition: 0.8s 0.4s !important;
+    -o-transition: 0.8s 0.4s !important;
+    transition: 0.8s 0.4s !important; }
 
 article {
   top: 10%;

@@ -164,47 +164,8 @@ header{
       cursor: pointer;
     }
 
-    .nbr2:active > .project2{
-      p:nth-child(2){
-        color: #4A4A4A;
-        opacity: 0.1;
-        font-family: 'DINOT-CondBold';
-        font-weight: bold;
-        font-style: normal;
-        font-size: 5em;
-        position: relative;
-        &::after{
-          content: '';
-          width: 2px;
-          height: 2.5rem;
-          display: inline-block;
-          background-color: #4A4A4A;
-          margin-left: 1rem;
-          position: relative;
-        }
-      }
-    }
 
-    p:first-child{
-      color: #4A4A4A;
-      font-family: 'DINOT-CondBold';
-      font-weight: bold;
-      font-style: normal;
-      font-size: 5em;
-      position: relative;
-      &::after{
-        content: '';
-        width: 2px;
-        height: 5rem;
-        display: inline-block;
-        background-color: #4A4A4A;
-        margin-left: 1rem;
-        top: 0.750rem;
-        position: relative;
-      }
-    }
-
-    p:nth-child(n+2){
+    p.nbr-work{
       color: #4A4A4A;
       opacity: 0.1;
       font-family: 'DINOT-CondBold';
@@ -222,16 +183,18 @@ header{
         position: relative;
       }
     }
-  }
 
-
-  .project.current > .div-img-project{
-    .img-project{
-      transform: translateX(0);
+    p.active{
       opacity: 1;
+      &::after{
+        content: '';
+        height: 5rem;
+        top: 0.750rem;
+      }
     }
-  }
 
+
+  }
 
   .projects{
     position: relative;
@@ -245,32 +208,82 @@ header{
       display: flex;
 
       .div-img-project{
+        z-index: 1;
+        position: relative;
         height: auto;
         flex: 1;
         overflow: hidden;
 
         .img-project{
+          position: relative;
           transform: translateX(-100%);
           opacity: 0;
-          transition: all 1s;
+          z-index: 2;
+          transition: opacity 0.4s ease, transform 0s ease 0.4s;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
         }
 
         .img-project1{
-          width: 100%;
-          height: 100%;
-          background: url(../img/work/work01.jpg) no-repeat;
-          background-position: 15% 50%;
-          background-size: cover;
+          background-image: url(../img/work/work01.jpg);
+          background-position: 50% 50%;
         }
 
         .img-project2{
-          background: url(../img/work/work02.png) no-repeat;
+          background-image: url(../img/work/work02.jpg);
           background-position: 15% 50%;
         }
 
         .img-project3{
-          background: url(../img/work/work03.jpg) no-repeat;
-          background-position: 15% 50%;
+          background-image: url(../img/work/work03.png);
+          background-position: 50% 50%;
+        }
+
+        .img-project4{
+          background-image: url(../img/work/work04.jpg);
+          background-position: 50% 50%;
+        }
+
+        .img-project5{
+          background-image: url(../img/work/work05.png);
+          background-position: 50% 50%;
+        }
+
+        .img-project6{
+          background-image: url(../img/work/work06.png);
+          background-position: 50% 50%;
+        }
+
+        .img-project7{
+          background-image: url(../img/work/work07.jpg);
+          background-position: 50% 50%;
+        }
+
+        .img-project8{
+          background-image: url(../img/work/work08.jpg);
+          background-position: 50% 50%;
+        }
+
+        .img-project9{
+          background-image: url(../img/work/work09.png);
+          background-position: 50% 50%;
+        }
+
+        .img-project10{
+          background-image: url(../img/work/work10.jpg);
+          background-position: 50% 50%;
+        }
+
+        .img-project11{
+          background-image: url(../img/work/work11.jpg);
+          background-position: 50% 50%;
+        }
+
+        .img-project12{
+          background-image: url(../img/work/work12.jpg);
+          background-position: 50% 50%;
         }
       }
 
@@ -278,6 +291,9 @@ header{
         width: 50%;
         padding-left: 40px;
         padding-top: 30px;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0s ease 0.4s;
 
         h3:first-child{
           font-size: 4em;
@@ -336,6 +352,18 @@ header{
         width: 100%;
         }
       }
+    }
+  }
+
+  .project.current{
+    .img-project, .description{
+      transform: translateX(0) !important;
+      opacity: 1 !important;
+      transition: 0.8s !important;
+    }
+
+    .description{
+      transition: 0.8s 0.4s !important;
     }
   }
 }
