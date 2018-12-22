@@ -192,7 +192,7 @@ var Card = (function(window, undefined) {
     
     TweenMax.set(this._letters, {css:{
           backfaceVisibility:"hidden"}});
-    var tween = TweenMax.staggerTo(this._letters, 0.8, {rotationY:"-=90", transformOrigin: 'center', transformStyle:'preserve-3d', ease:Power2.easeInOut}, 0.1);
+    var tween = TweenMax.staggerTo(this._letters, 0.4, {autoAlpha:0, y:"+=20", ease:Power2.easeInOut}, 0.1);
 
     return tween;
   };
@@ -838,6 +838,7 @@ var appCDL = null;
 			let options = {
 				debugMode: true,
 				elements: ['#page'],
+				pageClassPrefix: 'loadpage',
 				animationSelector: '.site-loader',
  				LINK_SELECTOR: '.swiper-container a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"]), .navbar a',
  				animations: {
@@ -856,7 +857,7 @@ var appCDL = null;
 				        	loader.removeClass('is-visible');
 				        	//$('body').addClass('is-loaded');
 				        	$('#page').removeClass('is-invisible');
-
+				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
 				        }
 				    }

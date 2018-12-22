@@ -343,6 +343,7 @@ var appCDL = null;
 			let options = {
 				debugMode: true,
 				elements: ['#page'],
+				pageClassPrefix: 'loadpage',
 				animationSelector: '.site-loader',
  				LINK_SELECTOR: '.swiper-container a:not([data-no-swup]):not([href$="jpg"]):not([href$="png"]), .navbar a',
  				animations: {
@@ -361,7 +362,7 @@ var appCDL = null;
 				        	loader.removeClass('is-visible');
 				        	//$('body').addClass('is-loaded');
 				        	$('#page').removeClass('is-invisible');
-
+				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
 				        }
 				    }
