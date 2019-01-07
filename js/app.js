@@ -290,7 +290,7 @@ var transitionPages = (function(window, undefined) {
     pattern: '.pattern',
     card: '.card',
     cardImage: '.card__image',
-    cardClose: '.card__btn-close',
+    cardClose: '.div-closecross',
     ajaxContent: '#page',
   };
 
@@ -306,6 +306,7 @@ var transitionPages = (function(window, undefined) {
   function init() {
 
     _bindCards();
+
   };
 
 
@@ -315,7 +316,8 @@ var transitionPages = (function(window, undefined) {
    */
   function _bindCards() {
 
-    var elements = $(SELECTORS.card);
+    var elements = $(SELECTORS.card),
+        cardClose = $('body').find(SELECTORS.cardClose);
 
     elements.each( function(i) {
 
@@ -326,12 +328,12 @@ var transitionPages = (function(window, undefined) {
       };
 
       var cardImage = $(this).find(SELECTORS.cardImage);
-      var cardClose = $('body').find(SELECTORS.cardClose);
 
       $(cardImage).on('click', {isOpenClick:true, cardId:i}, _playSequence);
       //$(cardImage).on('click', function(){console.log('click !')});
-      $(cardClose).on('click', {isOpenClick:false, cardId:i}, _playSequence);
     });
+
+    $(cardClose).on('click', {isOpenClick:false, cardId:-1}, _playSequence);
   };
 
   /**
@@ -344,7 +346,15 @@ var transitionPages = (function(window, undefined) {
    */
   function _playSequence(event) {
     let isOpenClick = event.data.isOpenClick,
-    id = event.data.cardId;
+        id = event.data.cardId,
+        cardClose = $('body').find(SELECTORS.cardClose);
+
+    console.log('_playSequence, id avant :'+id);
+
+    if ( id < 0 )
+      id = cardClose.data('card');
+
+    console.log('_playSequence, id apres :'+id);
 
     var card = layout[id].card;
 
@@ -360,6 +370,7 @@ var transitionPages = (function(window, undefined) {
 
     if (!card.isOpen) {
       //appCDL.config.$swiperHome.destroy();
+      cardClose.data('card', id);
 
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
@@ -368,6 +379,7 @@ var transitionPages = (function(window, undefined) {
 
     } else {
       // Close sequence.
+      console.log(id);
 
       var closeCard = card.closeCard();
       var position = closeCard.duration() * 0.8; // 80% of close card tween.
@@ -505,6 +517,7 @@ var appCDL = null;
  * CODE SPECIFIQUE SITE WEB
  */
 
+
 ( function( $ ) {
 	'use strict';
 
@@ -592,6 +605,14 @@ var appCDL = null;
 
 		bindEvents: function() {
 			var self = this;
+
+			 // sxupjs events
+			document.addEventListener('swup:contentReplaced', event => {
+				//console.log();
+			    swup.options.elements.forEach((selector) => {
+			        console.log(selector);
+			    })
+			});
 
 			// Run on document ready
 			self.config.$document.ready( function() {
@@ -835,6 +856,7 @@ var appCDL = null;
 		 *
 		 */
 		initPageTransitions: function() {
+			var self = this;
 			let options = {
 				debugMode: true,
 				elements: ['#page'],
@@ -859,11 +881,39 @@ var appCDL = null;
 				        	$('#page').removeClass('is-invisible');
 				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
+				        	if ($('html').hasClass('to-workhtml'))
+				        		self.initProjets();
 				        }
 				    }
 				}
 			};
 			const swupjs = new Swupjs(options)
+		},
+
+		/**
+		 * initProjets : scripts de la page work
+		 *
+		 */
+		initProjets: function() {
+
+			var previousProject = document.querySelector('.current');
+
+			var nbrs = document.querySelectorAll('.nbr-work');
+
+
+			nbrs.forEach(function(n) {
+			  n.addEventListener('click', function(event) {
+			    nbrs.forEach(function(elt) {
+			      elt.classList.remove('active');
+			    });
+			    //_removeClasses();
+			    event.target.classList.add('active');
+			    previousProject.classList.remove('current');
+			    var targetProject = document.querySelector(n.dataset.target);
+			    targetProject.classList.add('current');
+			    previousProject = targetProject;
+			  });
+			})
 		},
 
 		/**

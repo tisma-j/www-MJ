@@ -65,10 +65,19 @@ body {
 /*
  * HEADER
  */
- .navbar{
-     .navbar-brand {
+.div-closecross {
+    display: none;
+}
+html[class*="to-"] .div-burger {
+    display: none;
+}
+html[class*="to-"] .div-closecross {
+    display: block;
+}
+.navbar{
+    .navbar-brand {
         max-width: 80px;
-     }
+    }
     .navbar-toggler{
         border: none;
          .navbar-toggler-icon {

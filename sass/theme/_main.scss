@@ -74,11 +74,12 @@ header{
       }
     }
 
-    .div-burger{
+    .div-burger,
+    .div-closecross{
       position: relative;
       width: auto;
 
-      .burger {
+      svg {
         width: auto;
         height: 25px;
       }

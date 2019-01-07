@@ -10,6 +10,7 @@ var appCDL = null;
  * CODE SPECIFIQUE SITE WEB
  */
 
+
 ( function( $ ) {
 	'use strict';
 
@@ -97,6 +98,14 @@ var appCDL = null;
 
 		bindEvents: function() {
 			var self = this;
+
+			 // sxupjs events
+			document.addEventListener('swup:contentReplaced', event => {
+				//console.log();
+			    swup.options.elements.forEach((selector) => {
+			        console.log(selector);
+			    })
+			});
 
 			// Run on document ready
 			self.config.$document.ready( function() {
@@ -340,6 +349,7 @@ var appCDL = null;
 		 *
 		 */
 		initPageTransitions: function() {
+			var self = this;
 			let options = {
 				debugMode: true,
 				elements: ['#page'],
@@ -364,11 +374,39 @@ var appCDL = null;
 				        	$('#page').removeClass('is-invisible');
 				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
+				        	if ($('html').hasClass('to-workhtml'))
+				        		self.initProjets();
 				        }
 				    }
 				}
 			};
 			const swupjs = new Swupjs(options)
+		},
+
+		/**
+		 * initProjets : scripts de la page work
+		 *
+		 */
+		initProjets: function() {
+
+			var previousProject = document.querySelector('.current');
+
+			var nbrs = document.querySelectorAll('.nbr-work');
+
+
+			nbrs.forEach(function(n) {
+			  n.addEventListener('click', function(event) {
+			    nbrs.forEach(function(elt) {
+			      elt.classList.remove('active');
+			    });
+			    //_removeClasses();
+			    event.target.classList.add('active');
+			    previousProject.classList.remove('current');
+			    var targetProject = document.querySelector(n.dataset.target);
+			    targetProject.classList.add('current');
+			    previousProject = targetProject;
+			  });
+			})
 		},
 
 		/**
