@@ -463,10 +463,12 @@ align-items: center;
   .div-droite{
     font-size: 2em;
   }
+
 }
 
 
-// CAREER
+
+// GALLERY
 
 .div-top-gallery{
   top: 10%;
@@ -478,7 +480,6 @@ align-items: center;
   display: flex;
   box-shadow:inset 100vh 100vw rgba(0,0,0,0.2);
   box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
-
 
   .div-droite, .div-gauche{
     flex: 1;
@@ -496,6 +497,33 @@ align-items: center;
     font-size: 2em;
   }
 }
+
+// .photos-galerie{
+//   height: auto;
+//   display: block;
+//   margin: 20px;
+//   box-sizing: border-box;
+// }
+// .photos-galerie .grid-item,
+// .photos-galerie .grid-sizer {
+//   width: 33.333%;
+//   box-sizing: border-box;
+// }
+// .photos-galerie .grid-item {
+//   float: left;
+//   padding: 7px 7px 4px 7px;
+// }
+// .photos-galerie .grid-item--width2 {
+//   width: 66.666%;
+// }
+// .photos-galerie > img{
+// }
+// .photos-galerie .grid-item img {
+//   max-width: 100%;
+//   height: auto;
+// }
+
+
     // FOOTER
 
 footer{
