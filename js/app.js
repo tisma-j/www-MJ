@@ -218,9 +218,8 @@ var Card = (function(window, undefined) {
   Card.prototype.closeCard = function() {
 
     TweenLite.to(this._container, 0.4, {
-      scrollTo: {
         y: 0
-      },
+      ,
       onComplete: function() {
         $(this._container).css('overflow', 'hidden');
       }.bind(this),
@@ -379,15 +378,28 @@ var transitionPages = (function(window, undefined) {
 
     } else {
       // Close sequence.
-      console.log(id);
 
       var closeCard = card.closeCard();
       var position = closeCard.duration() * 0.8; // 80% of close card tween.
+      var returnToHome = new TimelineLite;
 
       onfire.fire('switch_swiper', 'enable');
 
+      returnToHome.to('#page>*', 0.4, {
+                y:"+=20",
+                alpha:0,
+                ease:Power3.esaeOut,
+                onComplete:function(){
+                  window.location = 'index.html'
+                }
+              });
+
+      sequence.add(returnToHome);
+
       sequence.add(closeCard);
+
       sequence.add(tweenOtherCards, position);
+
 
       //appCDL.swiperSlider();
     }

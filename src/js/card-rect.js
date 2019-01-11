@@ -218,9 +218,8 @@ var Card = (function(window, undefined) {
   Card.prototype.closeCard = function() {
 
     TweenLite.to(this._container, 0.4, {
-      scrollTo: {
         y: 0
-      },
+      ,
       onComplete: function() {
         $(this._container).css('overflow', 'hidden');
       }.bind(this),
