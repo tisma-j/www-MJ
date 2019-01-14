@@ -208,7 +208,9 @@ header{
       width: 100%;
       height: 100%;
       display: flex;
-
+      &.current {
+        z-index: 1;
+      }
       .div-img-project{
         z-index: 1;
         position: relative;
@@ -467,7 +469,12 @@ align-items: center;
 
 }
 
-
+.container-fluid-career {
+  position: relative;
+  width: 90%;
+  height: 70%;
+  display: flex;
+  }
 
 // CAREER
 /* ================ The Timeline ================ */
@@ -476,23 +483,22 @@ align-items: center;
   position: relative;
   width: 100%;
   margin: 0 auto;
-  margin-top: 20px;
-  padding: 1em 0;
+  padding: 4em 0;
   list-style-type: none;
   overflow: hidden;
+  overflow: scroll;
 }
 
 .timeline:before {
   position: absolute;
-  left: 50%;
+  left: 20%;
   top: 0;
   content: ' ';
   display: block;
   width: 1px;
-  height: 100%;
+  height: 150%;
   margin-left: 0;
-  background: rgb(80,80,80);
-  
+  background: #4A4A4A;
   z-index: 5;
 }
 
@@ -510,44 +516,36 @@ align-items: center;
 
 .direction-l {
   position: relative;
-  width: calc(50% - 30px);
+  width: calc(20% - 30px);
   float: left;
   text-align: right;
 }
 
 .direction-r {
   position: relative;
-  width: calc(50% - 30px);
+  width: calc(80% - 30px);
   float: right;
 }
 
 .flag-wrapper {
   position: relative;
   display: inline-block;
-  
 }
 
 .flag {
   position: relative;
   display: inline;
-  background: rgb(248,248,248);
   padding: 6px 10px;
-  border-radius: 5px;
-  
-  font-weight: 600;
   text-align: left;
 }
 
-.direction-l .flag {
-  -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+.flag-wrapper > strong,
+.flag-wrapper > span > strong{
+  font-size: 1.125em;
 }
 
-.direction-r .flag {
-  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+.flag-wrapper > span > strong{
+  margin-right: 25px;
 }
 
 .direction-l .flag:before,
@@ -559,28 +557,38 @@ align-items: center;
   display: block;
   width: 12px;
   height: 12px;
-  margin-top: -10px;
-  background: #fff;
+  margin-top: -7px;
+  background: whitesmoke;
   border-radius: 10px;
-  border: 1px solid #000000;
+  border: 1px solid #4A4A4A;
   z-index: 10;
   box-sizing: initial;
+  transition: ease 0.2s;
+  transform-origin: center;
 }
+
+.anim-flagtext:hover .flagtext:before{
+  transform: scale(1.2);
+  transition: ease 0.2s;
+  border-radius: 12px;
+
+}
+
 
 .direction-r .flag:before {
   left: -37px;
 }
 .direction-l .flag.year:before,
 .direction-r .flag.year:before {
-  background: #000000;
+  background: #4A4A4A;
 }
 
 .time-wrapper {
   display: inline;
-  
+
   line-height: 1em;
   font-size: 0.66666em;
-  color: rgb(250,80,80);
+  color: #4A4A4A;
   vertical-align: middle;
 }
 
@@ -600,7 +608,7 @@ align-items: center;
 
 .desc {
   margin: 1em 0.75em 0 0;
-  
+
   font-size: 0.77777em;
   font-style: italic;
   line-height: 1.5em;
@@ -636,40 +644,9 @@ align-items: center;
 }
 
 .flag {
-  background: rgb(255,255,255);
   z-index: 15;
 }
 
-.direction-l .flag:before,
-.direction-r .flag:before {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  content: ' ';
-  display: block;
-  width: 12px;
-  height: 12px;
-  margin-left: -9px;
-  background: #fff;
-  border-radius: 10px;
-  border: 4px solid rgb(255,80,80);
-  z-index: 10;
-}
-
-.direction-l .flag:after,
-.direction-r .flag:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -8px;
-  height: 0;
-  width: 0;
-  margin-left: -8px;
-  border: solid transparent;
-  border-bottom-color: rgb(255,255,255);
-  border-width: 8px;
-  pointer-events: none;
-}
 
 .time-wrapper {
   display: block;
@@ -694,7 +671,7 @@ align-items: center;
   -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
   -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
   box-shadow: 0 0 1px rgba(0,0,0,0.20);
-  
+
   z-index: 15;
 }
 
@@ -703,19 +680,17 @@ align-items: center;
   position: relative;
   margin: 1em 1em 0 1em;
   padding: 1em;
-  
+
   z-index: 15;
 }
 
 }
 
 @media screen and (min-width: 400px) and (max-width: 660px) {
-
-.direction-l .desc,
-.direction-r .desc {
-  margin: 1em 4em 0 4em;
-}
-
+  .direction-l .desc,
+  .direction-r .desc {
+    margin: 1em 4em 0 4em;
+  }
 }
 
 // GALLERY
