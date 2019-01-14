@@ -237,5 +237,3 @@ var transitionPages = (function(window, undefined) {
 
 })(window);
 
-// Kickstart transitionPages.
-window.onload = transitionPages.init;

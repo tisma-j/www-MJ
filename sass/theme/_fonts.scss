@@ -9,6 +9,17 @@
   }
 
 }
+@each $variant in Black, Bold, Light, Medium, Regular, CondBold {
+
+  @font-face {
+    font-family: 'DINOT-#{$variant}';
+    src: url('../fonts/dinot/DINOT-#{$variant}.eot');
+    src: url('../fonts/dinot/DINOT-#{$variant}.eot?#iefix') format('embedded-opentype'), url('../fonts/dinot/DINOT-#{$variant}.woff') format('woff'), url('../fonts/dinot/DINOT-#{$variant}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+}
 
 @mixin font-bolder {
   font-family: 'TSTARPRO-Headline'

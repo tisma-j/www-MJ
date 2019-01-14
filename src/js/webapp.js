@@ -114,7 +114,8 @@ var appCDL = null;
 				self.initUpdateConfig();
 
 				// init Page Transitions
-				self.initPageTransitions();
+				if ( !self.mobileCheck() )
+					self.initPageTransitions();
 
 				// init burger Menu
 				self.initBurger();
@@ -139,6 +140,10 @@ var appCDL = null;
 
 				// Update config on window load
 				self.windowLoadUpdateConfig();
+
+				// Kickstart transitionPages.
+				if ( !self.mobileCheck() )
+					transitionPages.init();
 
 				if ($.exists('body.home') )
 				    self.initHome();
@@ -374,13 +379,15 @@ var appCDL = null;
 				        	$('#page').removeClass('is-invisible');
 				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
-				        	if ($('html').hasClass('to-workhtml'))
+				        	if ($('html').hasClass('to-workhtml')){
 				        		self.initProjets();
+				        	}
+
 				        }
 				    }
 				}
 			};
-			const swupjs = new Swupjs(options)
+				const swupjs = new Swupjs(options)
 		},
 
 		/**
@@ -392,6 +399,9 @@ var appCDL = null;
 			var previousProject = document.querySelector('.current');
 
 			var nbrs = document.querySelectorAll('.nbr-work');
+			
+			//init first project
+			$('.projects>:first-child').addClass('current');
 
 
 			nbrs.forEach(function(n) {

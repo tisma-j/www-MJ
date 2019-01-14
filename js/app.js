@@ -12,6 +12,7 @@ var Card = (function(window, undefined) {
     container: '.card__container',
     content: '.ajax-content',
     clip: '.clip',
+    image: 'image',
     letters: '.titre-section span'
   };
 
@@ -35,6 +36,7 @@ var Card = (function(window, undefined) {
     // Get elements.
     this._container = $(this._el).find(SELECTORS.container)[0];
     this._clip = $(this._el).find(SELECTORS.clip)[0];
+    this._image = $(this._el).find(SELECTORS.image)[0];
     this._content = $('body').find(SELECTORS.content)[0];
     this._letters = $(this._el).parent('.swiper-slide').find(SELECTORS.letters);
 
@@ -55,6 +57,7 @@ var Card = (function(window, undefined) {
     //var clipImageIn = this._clipImageIn();
     var floatContainer = this._floatContainer(callback);
     var clipImageOut = this._clipImageOut();
+    //var moveImageInside = this._moveImageInside();
     var fallingLetters = this._fallingLetters();
     //var slideContentUp = this._slideContentUp();
 
@@ -63,7 +66,8 @@ var Card = (function(window, undefined) {
     //this._TL.add(clipImageIn, 0);
    this._TL.add(floatContainer, 0);
    this._TL.add(fallingLetters, 0);
-   //this._TL.add(clipImageOut, floatContainer.duration());
+   //this._TL.add(clipImageOut, 0);
+   //this._TL.add(moveImageInside, floatContainer.duration() * 0.8);
    //this._TL.add(slideContentUp, '-=' + clipImageOut.duration() * 0.6);
 
     //GSDevTools.create({id:"card"});
@@ -165,6 +169,7 @@ var Card = (function(window, undefined) {
       scaleY: 1,
       autoRound: false,
       transformOrigin:"50% 50%",
+      y:"+=200",
       smoothOrigin: true,
       ease: Expo.easeInOut
     });
@@ -175,6 +180,24 @@ var Card = (function(window, undefined) {
     // var tween = this._clipImageIn();
 
     // tween.vars.attr.r = radius;
+
+    return tween;
+  };
+
+  /**
+   * Adjust image position for work.html
+   * @private
+   */
+  Card.prototype._moveImageInside = function() {
+
+    let windowH       = window.innerHeight;
+
+    console.log($(this._el).find('svg').height());
+    var tween = TweenLite.to(this._image, 0.8, {
+      yPercent:-50,
+      transform:'translateY('+windowH*.9*.3+')',
+      ease: Expo.easeInOut
+    });
 
     return tween;
   };
@@ -514,8 +537,6 @@ var transitionPages = (function(window, undefined) {
 
 })(window);
 
-// Kickstart transitionPages.
-window.onload = transitionPages.init;
 
 /**
  * File app.js.
@@ -633,7 +654,8 @@ var appCDL = null;
 				self.initUpdateConfig();
 
 				// init Page Transitions
-				self.initPageTransitions();
+				if ( !self.mobileCheck() )
+					self.initPageTransitions();
 
 				// init burger Menu
 				self.initBurger();
@@ -658,6 +680,10 @@ var appCDL = null;
 
 				// Update config on window load
 				self.windowLoadUpdateConfig();
+
+				// Kickstart transitionPages.
+				if ( !self.mobileCheck() )
+					transitionPages.init();
 
 				if ($.exists('body.home') )
 				    self.initHome();
@@ -893,13 +919,15 @@ var appCDL = null;
 				        	$('#page').removeClass('is-invisible');
 				        	TweenMax.to(['.swiper-container', '.swiper-pagination-bullets'], 0.4, {autoAlpha:0});
 				        	Delighters.init();
-				        	if ($('html').hasClass('to-workhtml'))
+				        	if ($('html').hasClass('to-workhtml')){
 				        		self.initProjets();
+				        	}
+
 				        }
 				    }
 				}
 			};
-			const swupjs = new Swupjs(options)
+				const swupjs = new Swupjs(options)
 		},
 
 		/**
@@ -911,6 +939,9 @@ var appCDL = null;
 			var previousProject = document.querySelector('.current');
 
 			var nbrs = document.querySelectorAll('.nbr-work');
+			
+			//init first project
+			$('.projects>:first-child').addClass('current');
 
 
 			nbrs.forEach(function(n) {

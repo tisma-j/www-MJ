@@ -10053,6 +10053,48 @@ img.mfp-img {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: "DINOT-Black";
+  src: url("../fonts/dinot/DINOT-Black.eot");
+  src: url("../fonts/dinot/DINOT-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-Black.woff") format("woff"), url("../fonts/dinot/DINOT-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DINOT-Bold";
+  src: url("../fonts/dinot/DINOT-Bold.eot");
+  src: url("../fonts/dinot/DINOT-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-Bold.woff") format("woff"), url("../fonts/dinot/DINOT-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DINOT-Light";
+  src: url("../fonts/dinot/DINOT-Light.eot");
+  src: url("../fonts/dinot/DINOT-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-Light.woff") format("woff"), url("../fonts/dinot/DINOT-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DINOT-Medium";
+  src: url("../fonts/dinot/DINOT-Medium.eot");
+  src: url("../fonts/dinot/DINOT-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-Medium.woff") format("woff"), url("../fonts/dinot/DINOT-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DINOT-Regular";
+  src: url("../fonts/dinot/DINOT-Regular.eot");
+  src: url("../fonts/dinot/DINOT-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-Regular.woff") format("woff"), url("../fonts/dinot/DINOT-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DINOT-CondBold";
+  src: url("../fonts/dinot/DINOT-CondBold.eot");
+  src: url("../fonts/dinot/DINOT-CondBold.eot?#iefix") format("embedded-opentype"), url("../fonts/dinot/DINOT-CondBold.woff") format("woff"), url("../fonts/dinot/DINOT-CondBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
 body {
   margin: 0;
   display: -webkit-box;
@@ -10063,7 +10105,8 @@ body {
           justify-content: center; }
 
 body.body--hidden {
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: 'DINOT-Regular'; }
 
 .titre-section > span {
   font-family: 'DINOT-CondBold';
@@ -10079,7 +10122,7 @@ h1, h2, h3, a {
 
 p {
   color: #4A4A4A;
-  font-family: 'DINOT';
+  font-family: 'DINOT-regular';
   font-weight: normal;
   font-style: normal;
   font-size: 1.125em; }

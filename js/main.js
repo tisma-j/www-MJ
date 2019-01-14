@@ -1,7 +1,11 @@
 
-var previousProject = document.querySelector('.current');
+var previousProject = document.querySelector('.current'),
+    firstProject = document.querySelector('.projects>:first-child');
 
 var nbrs = document.querySelectorAll('.nbr-work');
+
+//init first project
+firstProject.classList.add('current');
 
 
 nbrs.forEach(function(n) {
