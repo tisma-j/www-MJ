@@ -10669,11 +10669,11 @@ article {
 .direction-r .flag:before {
   position: absolute;
   top: 50%;
-  right: -37px;
+  right: -39px;
   content: ' ';
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   margin-top: -7px;
   background: whitesmoke;
   border-radius: 10px;
@@ -10695,10 +10695,10 @@ article {
   -webkit-transition: ease 0.2s;
   -o-transition: ease 0.2s;
   transition: ease 0.2s;
-  border-radius: 12px; }
+  border-radius: 16px; }
 
 .direction-r .flag:before {
-  left: -37px; }
+  left: -38px; }
 
 .direction-l .flag.year:before,
 .direction-r .flag.year:before {
@@ -10809,6 +10809,34 @@ article {
     font-size: 1.5em; }
   .div-top-gallery .div-droite {
     font-size: 2em; }
+
+.content-article {
+  height: auto;
+  position: relative; }
+
+.photos-galerie {
+  height: auto;
+  display: block;
+  margin: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.photos-galerie .grid-item,
+.photos-galerie .grid-sizer {
+  width: 33.333%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.photos-galerie .grid-item {
+  float: left;
+  padding: 7px 7px 4px 7px; }
+
+.photos-galerie .grid-item--width2 {
+  width: 66.666%; }
+
+.photos-galerie .grid-item img {
+  max-width: 100%;
+  height: auto; }
 
 footer {
   position: fixed;
